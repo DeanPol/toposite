@@ -157,20 +157,20 @@ export default function Home() {
       </header>
 
       {/* Hero Banner */}
-      <section className="bg-muted/50 grid grid-cols-1 md:grid-cols-4 items-center w-full h-full mt-16">
-        <div className="col-span-1 md:col-span-3">
-          <img
-            src="/images/header_fit.webp"
-            alt="Hero background"
-            className="w-full max-h-[400px] object-cover"
-          />
-        </div>
-        <div className="md:col-start-4 md:col-span-1 col-span-1 p-4 text-center">
+      <section className="relative bg-muted/50 mt-16 xl:max-w-screen-2xl xl:mx-auto">
+        <img
+          src="/images/header_fit.webp"
+          alt="Hero background"
+          className="w-full max-h-[400px] object-cover"
+        />
+        <div className="p-4 text-center mx-auto lg:absolute lg:top-1/2 lg:translate-y-[-50%] lg:right-0 lg:bg-card lg:rounded lg:max-w-md lg:mr-8">
           <h1 className="text-lg font-bold mb-4 tracking-tight">
             ΠΟΛΙΤΗΣ ΕΔΟΥΑΡΔΟΣ-ΟΔΥΣΣΕΑΣ
           </h1>
           <h2 className="text-lg text-muted-foreground mb-8">
-            Αγρονόμος Τοπογράφος Μηχανικός
+            Αγρονόμος Τοπογράφος Μηχανικός Εθνικού Μετσόβιου Πολυτεχνείου,
+            ειδικός στις υπηρεσίες χαρτογράφησης και τοπογραφίας, προσφέροντας
+            γρήγορα και πάνω από όλα έγκυρα αποτελέσματα.
           </h2>
           <Button size="lg" variant="outline">
             <Link href="#contact">Επικοινωνία</Link>
@@ -190,7 +190,7 @@ export default function Home() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-card rounded-lg overflow-hidden transition-all hover:shadow-lg  bg-[aliceblue] border border-gray-150"
+              className="rounded-lg overflow-hidden transition-all hover:shadow-lg  bg-[azure] border border-gray-150"
             >
               <div className="aspect-video overflow-hidden border-b border-border/50">
                 <img
@@ -262,7 +262,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+              <h2 className="text-3xl font-bold mb-4">Επικοινωνήστε μας</h2>
               <p className="text-muted-foreground mb-8">
                 Have a project in mind? Let's discuss how we can help you
                 achieve your goals.
