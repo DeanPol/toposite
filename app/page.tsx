@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Mail, Phone, MapPin, Send } from "lucide-react";
+import { Menu, Mail, Phone, MapPin, Send, ChevronRight } from "lucide-react";
 import { Button } from "@/components/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import { cn } from "@/lib/utils";
@@ -8,68 +8,87 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "ΥΠΗΡΕΣΙΕΣ", href: "#services" },
+  { name: "Η ΟΜΑΔΑ", href: "#about" },
+  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: "#contact" },
 ];
 
 const services = [
   {
-    title: "Web Development",
-    description:
-      "Custom web applications built with cutting-edge technologies and best practices. Our team specializes in creating scalable, responsive websites that deliver exceptional user experiences. We utilize modern frameworks like React, Next.js, and Vue.js to build fast, secure, and maintainable applications that help your business grow.",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80",
+    title: "ΤΟΠΟΓΡΑΦΙΚΕΣ ΜΕΛΕΤΕΣ",
+    image: "/images/image_1.webp",
+    longDescription:
+      "Αναλαμβάνουμε την λεπτομερή και ακριβής αποτύπωση του ακινήτου σας ως προς τα προβολικά συστήματα συντεταγμένων που χρησιμοποιούνται στον Ελλαδικό χώρο, όπως το Ελληνικό Γεωδαιτικό Σύστημα Αναφοράς 1987, και πάντοτε σύμφωνα με τις ισχύουσες προδιαγραφές.",
+    subServices: [
+      "Τοπογραφικό Διάγραμμα για Εθνικό Κτηματολόγιο",
+      "Τοπογραφικό για την Πράξη Χαρακτηρισμού από το Δασαρχείο",
+      "Τοπογραφικό για Άδεια Οικοδομής",
+      "Τοπογραφικό για την Αγοραπωλησία Ακινήτου",
+      "Τοπογραφικό για Κατάτμηση κ.ο.κ",
+    ],
   },
   {
-    title: "Mobile Development",
-    description:
-      "Comprehensive mobile solutions for both iOS and Android platforms. We create native and cross-platform applications that engage users and drive business growth. Our mobile development team focuses on performance, user experience, and platform-specific design guidelines to deliver apps that stand out in the crowded app marketplace.",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80",
+    title: "ΤΕΧΝΙΚΕΣ ΕΚΘΕΣΕΙΣ ΦΩΤΟΕΡΜΗΝΕΙΑΣ",
+    image: "/images/image_2.webp",
+    longDescription:
+      "Our mobile development team crafts exceptional mobile experiences that users love. We understand the unique challenges of mobile platforms and create solutions that perform flawlessly across devices. From concept to deployment, we ensure your mobile application stands out in the crowded app marketplace.",
+    subServices: [
+      "iOS App Development",
+      "Android App Development",
+      "Cross-platform Development",
+      "Mobile UI/UX Design",
+      "App Store Optimization",
+      "Mobile App Testing",
+      "Ongoing Maintenance and Updates",
+    ],
   },
   {
-    title: "UI/UX Design",
-    description:
-      "User-centered design solutions that enhance user experience and drive engagement. Our design team combines aesthetics with functionality, creating intuitive interfaces that users love. We conduct thorough research, create user personas, and implement design systems that ensure consistency across all your digital products.",
-    image:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80",
+    title: "ΟΙΚΟΔΟΜΙΚΕΣ ΑΔΕΙΕΣ",
+    image: "/images/image_3.webp",
+    longDescription:
+      "Αναλαμβάνουμε όλες τις απαιτούμενες μελέτες καθώς και την επίβλεψη νέων οικοδομικών έργων.",
+    subServices: [
+      "Αρχιτεκτονική Μελέτη, με γνώμονα την αρχιτεκτονική προσαρμογή του κτιρίου στο περιβάλλοντα χώρο και τις απαιτήσεις του πελάτη",
+      "Φωτορεαλιστική τρισδιάστατη απεικόνιση του υπό μελέτη κτιρίου σε πελάτες που θέλουν να δουν το υπό μελέτη κτίριο τους υλοποιημένο πριν καν κατασκευαστεί",
+      "Στατικές Μελέτες",
+    ],
   },
   {
-    title: "Cloud Solutions",
-    description:
-      "Enterprise-grade cloud infrastructure and deployment solutions that scale with your business. We provide comprehensive cloud strategy, migration, and management services using leading platforms like AWS, Azure, and Google Cloud. Our solutions ensure high availability, security, and cost optimization for your applications.",
-    image:
-      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80",
+    title: "ΕΝΕΡΓΕΙΑΚΕΣ ΕΠΙΘΕΩΡΗΣΕΙΣ",
+    image: "/images/image_4.webp",
+    longDescription:
+      "Αναλαμβάνουμε την ενεργειακή επιθεώρηση της ιδιοκτησίας σας και την έκδοση του πιστοποιητικού ενεργειακής απόδοσης σε σύντομο χρονικό διάστημα και πάντοτε σύμφωνα με τις ισχύουσες προδιαγραφές.",
+    subServices: [],
   },
   {
-    title: "DevOps Services",
-    description:
-      "Streamline your development and operations with our comprehensive DevOps solutions. We implement continuous integration and deployment pipelines, automate testing processes, and establish monitoring systems that ensure your applications run smoothly. Our DevOps practices reduce time-to-market while maintaining high quality standards.",
-    image:
-      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80",
+    title: "ΜΕΛΕΤΕΣ ΠΥΡΑΣΦΑΛΕΙΑΣ",
+
+    image: "/images/image_5.webp",
+    longDescription:
+      "Το Τεχνικό Γραφείο αναλαμβάνει την εκπόνηση μελετών εγκαταστάσεων και δικτύων ενεργητικής πυροπροστασίας και πυρασφάλειας.",
+    subServices: [],
   },
   {
-    title: "Data Analytics",
-    description:
-      "Transform your raw data into actionable insights with our advanced analytics solutions. We help businesses collect, process, and analyze data to make informed decisions. Our team implements machine learning models, creates interactive dashboards, and develops predictive analytics systems that drive business growth.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
+    title: "ΤΕΧΝΙΚΕΣ ΕΚΘΕΣΕΙΣ",
+    image: "/images/image_6.webp",
+    longDescription:
+      "Αναλαμβάνουμε τη σύνταξη τεκμηριωμένων τεχνικών εκθέσεων προς επίλυση ιδιοκτησιακών διαφορών αμφισβήτισης ορίων, αλλά και εκθέσεων εφαρμογής τίτλων ιδιοκτησίας που μπορούν να χρησιμοποιηθούν στα αρμόδια δικαστήρια.",
+    subServices: [],
   },
   {
-    title: "Cybersecurity",
-    description:
-      "Protect your digital assets with our comprehensive security solutions. We provide security audits, implement robust authentication systems, and establish security protocols that safeguard your applications and data. Our team stays up-to-date with the latest security threats and best practices to ensure your systems remain secure.",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
-  },
-  {
-    title: "Digital Consulting",
-    description:
-      "Strategic technology consulting to help your business navigate the digital landscape. Our experienced consultants work with you to develop technology roadmaps, optimize processes, and implement solutions that align with your business objectives. We provide guidance on technology selection, architecture decisions, and digital transformation initiatives.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80",
+    title: "ΥΠΗΡΕΣΙΕΣ ΓΙΑ ΕΠΑΓΓΕΛΜΑΤΙΕΣ",
+    image: "/images/image_7.webp",
+    longDescription:
+      "Αναλαμβάνουμε την υποστήριξη επαγγελματιών του τεχνικού κλάδου (αρχιτέκτονες κ.α.) για την υλοποίηση των έργων τους, καθώς και επιχειρήσεων (λατομεία κ.α.) για την εύρυθμη λειτουργία τους (ογκομετρήσεις κ.α.). καθώς και μεγαλύτερων έργων προς διασφάλισης της ποιότητας του παραδοτέου έργου (ίδρυση και επίλυση δικτύων οριζοντιογραφικού και κατακόρυφου ελέγχου με σκοπό την αποτύπωση, χάραξη, καθώς και για τον έλεγχο μικρομετακινήσεων).",
+    subServices: [
+      "Ίδρυση/Επίλυση οδεύσεων",
+      "Ίδρυση/Επίλυση Χωροσταθμικών δικτύων",
+      "Ίδρυση/Επίλυση 2D/3D δικτύων με την μέθοδο των ελαχίστων τετραγώνων",
+      "Λεπτομερείς Τεχνικές εκθέσεις συνορθώσεων",
+      "Αποτυπώσεις-Ίδρυση Δικτύων-Χαράξεις",
+      "Ογκομετρήσεις",
+      "Τοπογραφικές Μελέτες",
+    ],
   },
 ];
 
@@ -138,62 +157,75 @@ export default function Home() {
       </header>
 
       {/* Hero Banner */}
-      <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0">
+      <section className="bg-muted/50 grid grid-cols-1 md:grid-cols-4 items-center w-full h-full mt-16">
+        <div className="col-span-1 md:col-span-3">
           <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+            src="/images/header_fit.webp"
             alt="Hero background"
-            className="w-full h-full object-cover"
+            className="w-full max-h-[400px] object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/60" />
         </div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Transform Your Ideas Into Reality
+        <div className="md:col-start-4 md:col-span-1 col-span-1 p-4 text-center">
+          <h1 className="text-lg font-bold mb-4 tracking-tight">
+            ΠΟΛΙΤΗΣ ΕΔΟΥΑΡΔΟΣ-ΟΔΥΣΣΕΑΣ
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            We're a team of experts dedicated to delivering exceptional digital
-            solutions for your business.
-          </p>
-          <Button size="lg" className="mr-4">
-            Our Services
-          </Button>
+          <h2 className="text-lg text-muted-foreground mb-8">
+            Αγρονόμος Τοπογράφος Μηχανικός
+          </h2>
           <Button size="lg" variant="outline">
-            Contact Us
+            <Link href="#contact">Επικοινωνία</Link>
           </Button>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4 text-center">Our Services</h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-          We offer a comprehensive range of digital services to help your
-          business grow and succeed in the digital age.
+      <section id="services" className="mt-16 container mx-auto px-4">
+        <h2 className="text-xl font-bold mb-4 text-center">
+          ΕΠΑΓΓΕΛΜΑΤΙΚΕΣ ΥΠΗΡΕΣΙΕΣ
+        </h2>
+        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          Υπηρεσίες που παρέχουμε
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 text-center">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-card rounded-lg overflow-hidden transition-all hover:shadow-lg flex flex-col h-full"
+              className="bg-card rounded-lg overflow-hidden transition-all hover:shadow-lg  bg-[aliceblue] border border-gray-150"
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden border-b border-border/50">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-muted"
                 />
               </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
-                  {service.description}
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+                <p className="text-muted-foreground mb-6">
+                  {service.longDescription}
                 </p>
+                <div className="mt-6">
+                  <ul className="space-y-2">
+                    {service.subServices?.map((subService, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <ChevronRight className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-left">{subService}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="relative container px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk]">
+          <p className="text-xs md:text-sm text-muted-foreground max-w-2xl mx-auto">
+            Κάθε δικαιοπραξία που έχει ώς αντικείμενο Αγοραπωλησία, Γονική
+            παροχή, Δωρεά κλπ, πρέπει να συνοδεύεται από τοπογραφικό διάγραμμα
+            (ν.651/77, άρ. 5). Πέρα όμως από την απαίτηση του νόμου, το σωστό
+            τοπογραφικό διάγραμμα εξασφαλίζει την ακριβή θέση των ορίων του
+            ακινήτου σας επ'αόριστον.
+          </p>
         </div>
       </section>
 
@@ -203,7 +235,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+                src="/images/header_banner.webp"
                 alt="Our team collaborating"
                 className="w-full h-full object-cover"
               />
@@ -215,30 +247,11 @@ export default function Home() {
                 <div className="h-1 w-20 bg-primary rounded-full" />
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We are a passionate team of technology experts, innovators, and
-                problem solvers dedicated to helping businesses thrive in the
-                digital age. With over a decade of experience in delivering
-                cutting-edge solutions, we've helped countless organizations
-                transform their digital presence and achieve their business
-                goals.
+                Ο Αγρονόμος Τοπογράφος Μηχανικός Εθνικού Μετσόβιου Πολυτεχνείου
+                Πολίτης Εδουάρδος-Οδυσσέας, είναι ειδικός στις υπηρεσίες
+                χαρτογράφησης και τοπογραφίας, προσφέροντας γρήγορα και πάνω από
+                όλα έγκυρα αποτελέσματα.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Our approach combines technical excellence with a deep
-                understanding of business needs. We believe in building
-                long-term partnerships with our clients, providing not just
-                services, but strategic guidance and support throughout their
-                digital journey.
-              </p>
-              <div className="grid grid-cols-2 gap-8 pt-6">
-                <div>
-                  <h3 className="text-3xl font-bold text-primary mb-2">250+</h3>
-                  <p className="text-muted-foreground">Projects Completed</p>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-primary mb-2">95%</h3>
-                  <p className="text-muted-foreground">Client Satisfaction</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
