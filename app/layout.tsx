@@ -17,6 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <title>Τεχνικό Μελετητικό Γραφείο | Πολίτης Εδουάρδος-Οδυσσέας</title>
+        <meta name="description" content="Τεχνικό Μελετητικό Γραφείο"></meta>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
