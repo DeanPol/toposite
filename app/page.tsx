@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/sheet";
 import ListItem from "@/components/list";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/carousel";
 import { cn } from "@/lib/utils";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const navigation = [
@@ -340,16 +340,14 @@ export default function Home() {
                       <div className="h-1 w-20 bg-primary rounded-full" />
                     </div>
                     <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed">
-                      <Suspense>
-                        <ListItem text="Αποτύπωση έκτασης για μίσθωση Παραλίας στη Νάξο." />
-                        <ListItem text="Αποτύπωση γηπέδου για σύνταξη συμβολαίου." />
-                        <ListItem text="Τεχνική έκθεση φωτοερμηνείας απόδειξης ύπαρξης δρόμου από το έτος 1945." />
-                        <ListItem text="Νομιμοποίηση κτίσματος με το ν.4178/13." />
-                        <ListItem text="Ρύθμιση αυθαίρετων κατασκευών με το ν.4178/13." />
-                        <ListItem text="Τεχνικές εκθέσεις Πραγματογνωμοσύνης." />
-                        <ListItem text="Ενεργειακές Επιθεώρησεις." />
-                        <ListItem text="Σύνταξη τοπογραφικών διαγραμμάτων με χρήση Gnss και απόδοση υψομετρικών καμπύλων." />
-                      </Suspense>
+                      <ListItem text="Αποτύπωση έκτασης για μίσθωση Παραλίας στη Νάξο." />
+                      <ListItem text="Αποτύπωση γηπέδου για σύνταξη συμβολαίου." />
+                      <ListItem text="Τεχνική έκθεση φωτοερμηνείας απόδειξης ύπαρξης δρόμου από το έτος 1945." />
+                      <ListItem text="Νομιμοποίηση κτίσματος με το ν.4178/13." />
+                      <ListItem text="Ρύθμιση αυθαίρετων κατασκευών με το ν.4178/13." />
+                      <ListItem text="Τεχνικές εκθέσεις Πραγματογνωμοσύνης." />
+                      <ListItem text="Ενεργειακές Επιθεώρησεις." />
+                      <ListItem text="Σύνταξη τοπογραφικών διαγραμμάτων με χρήση Gnss και απόδοση υψομετρικών καμπύλων." />
                     </ul>
                   </div>
                 </div>
