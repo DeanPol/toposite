@@ -6,9 +6,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TechBlog - Latest in Technology",
-  description:
-    "Discover the latest insights in technology, web development, and design",
+  title: "Τεχνικό Μελετητικό Γραφείο | Πολίτης Εδουάρδος-Οδυσσέας",
+  description: "Υπηρεσίες Τεχνικής Μελέτης",
 };
 
 export default function RootLayout({

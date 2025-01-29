@@ -153,6 +153,8 @@ export default function Home() {
                 alt="Site Logo"
                 src="/images/site_logo.webp"
                 className="h-[60px]"
+                height={60}
+                width={80}
               />
             </button>
 
@@ -177,7 +179,7 @@ export default function Home() {
             {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon">
+                <Button aria-label="Burger Menu" variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
@@ -359,11 +361,13 @@ export default function Home() {
                           Γεωδαιτικός δέκτης κινηματικών μετρήσεων:
                         </span>
                         <ul className=" pl-6 mt-2 text-sm text-gray-600">
-                          <li>Ακρίβεια RTK:</li>
-                          <ul className="pl-6">
-                            <li>H: 8mm ± 1ppm (rms)</li>
-                            <li>V: 15mm ± 1ppm (rms)</li>
-                          </ul>
+                          <li>
+                            Ακρίβεια RTK:
+                            <ul className="pl-6">
+                              <li>H: 8mm ± 1ppm (rms)</li>
+                              <li>V: 15mm ± 1ppm (rms)</li>
+                            </ul>
+                          </li>
                         </ul>
                       </li>
                       <li>
@@ -371,17 +375,21 @@ export default function Home() {
                           Γεωδαιτικοί δέκτες στατικών και κινηματικών μετρήσεων:
                         </span>
                         <ul className=" pl-6 mt-2 text-sm text-gray-600">
-                          <li>Ακρίβεια static:</li>
-                          <ul className="pl-6">
-                            <li>H: 5mm + 1ppm</li>
-                            <li>V: 10 mm + 2 ppm</li>
-                          </ul>
-                          <br />
-                          <li>Ακρίβεια RTK:</li>
-                          <ul className="pl-6">
-                            <li>H: 7 mm + 1 ppm</li>
-                            <li>V: 14 mm + 2 ppm</li>
-                          </ul>
+                          <li>
+                            Ακρίβεια static:
+                            <ul className="pl-6">
+                              <li>H: 5mm + 1ppm</li>
+                              <li>V: 10 mm + 2 ppm</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <br />
+                            Ακρίβεια RTK:
+                            <ul className="pl-6">
+                              <li>H: 7 mm + 1 ppm</li>
+                              <li>V: 14 mm + 2 ppm</li>
+                            </ul>
+                          </li>
                         </ul>
                       </li>
                       <li>
@@ -503,10 +511,17 @@ export default function Home() {
                         <label className="block text-sm font-medium mb-2">
                           Μήνυμα
                         </label>
-                        <textarea className="w-full px-4 py-2 rounded-md border bg-background h-32" />
+                        <textarea
+                          placeholder="Το μήνυμά σας..."
+                          className="w-full px-4 py-2 rounded-md border bg-background h-32"
+                        />
                       </div>
 
-                      <Button className="w-full" size="lg">
+                      <Button
+                        aria-label="Send Message"
+                        className="w-full"
+                        size="lg"
+                      >
                         <Send className="mr-2 h-4 w-4" /> Αποστολή
                       </Button>
                     </form>
