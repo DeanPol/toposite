@@ -9,6 +9,17 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import '../i18n'
+import {useTranslation} from 'react-i18next'
+
+interface Languages{
+  [key: string]: {nativeName: string}
+}
+const lngs: Languages = {
+  el: {nativeName: 'Greek'},
+  en: {nativeName: 'English'}
+}
+
 const navigation = [
   { name: "ΑΡΧΙΚΗ", href: "#home" },
   { name: "ΥΠΗΡΕΣΙΕΣ", href: "#services" },
@@ -107,6 +118,8 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
   const sections = ["home", "services", "about", "contact"];
 
+  const {t, i18n} = useTranslation();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -157,6 +170,12 @@ export default function Home() {
                 width={80}
               />
             </button>
+
+            <div>
+            {Object.entries(lngs).map(([key, value]) => (
+              <button type="submit" key={key} onClick={()=> i18n.changeLanguage(key)} disabled={i18n.resolvedLanguage === key}>{value.nativeName}</button>
+            ))}
+          </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
@@ -244,7 +263,7 @@ export default function Home() {
                     className="mr-4"
                     onClick={() => handleNavigation(1)}
                   >
-                    Υπηρεσίες
+                    {t('services')}
                   </Button>
                   <Button
                     size="lg"
