@@ -6,100 +6,41 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/sheet';
 import ListItem from '@/components/list';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/carousel';
 import { cn } from '@/lib/utils';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import '../i18n';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-const services = [
-  {
-    title: 'ΤΟΠΟΓΡΑΦΙΚΕΣ ΜΕΛΕΤΕΣ',
-    image: '/images/service_1.webp',
-    longDescription:
-      'Αναλαμβάνουμε την λεπτομερή και ακριβής αποτύπωση του ακινήτου σας ως προς τα προβολικά συστήματα συντεταγμένων που χρησιμοποιούνται στον Ελλαδικό χώρο, όπως το Ελληνικό Γεωδαιτικό Σύστημα Αναφοράς 1987, και πάντοτε σύμφωνα με τις ισχύουσες προδιαγραφές.',
-    subServices: [
-      'Τοπογραφικό Διάγραμμα για Εθνικό Κτηματολόγιο',
-      'Τοπογραφικό για την Πράξη Χαρακτηρισμού από το Δασαρχείο',
-      'Τοπογραφικό για Άδεια Οικοδομής',
-      'Τοπογραφικό για την Αγοραπωλησία Ακινήτου',
-      'Τοπογραφικό για Κατάτμηση κ.ο.κ',
-    ],
-  },
-  {
-    title: 'ΤΕΧΝΙΚΕΣ ΕΚΘΕΣΕΙΣ ΦΩΤΟΕΡΜΗΝΕΙΑΣ',
-    image: '/images/service_2.webp',
-    longDescription:
-      'Φωτοερμηνεία είναι η διαδικασία κατά την οποία με χρήση αεροφωτογραφιών και δορυφορικών εικόνων από δημόσιες και ιδιωτικές υπηρεσίες μπορούμε να τεκμηριώσουμε τον χαρακτήρα εκτάσεων σε σχέση με την ισχύουσα δασική νομοθεσία (δασική ή μη), το είδος της βλάστησης και των καλλιεργειών εντός του υπό εξέταση ακινήτου, προσδιορισμό της γεωμορφολογίας του εδάφους, να αποδείξουμε την ύπαρξη ή μη δρόμων, παλαιών μονοπατιών, ρεμάτων, κτιρίων ή άλλων κατασκευών (βαθμίδες καλλιέργειας, ξερολιθιές, κ.α.) σε συγκεκριμένες ημερομηνίες. Οι Τεχνικές εκθέσεις που συντάσσονται κατατίθενται στα αρμόδια δικαστήρια και διάφορες υπηρεσίες για υποθέσεις ιδιοκτησιακών διαφορών, αυθαίρετων κατασκευών, καταπατήσεων κ.α.',
-    subServices: [],
-  },
-  {
-    title: 'ΟΙΚΟΔΟΜΙΚΕΣ ΑΔΕΙΕΣ',
-    image: '/images/service_3.webp',
-    longDescription:
-      'Αναλαμβάνουμε όλες τις απαιτούμενες μελέτες καθώς και την επίβλεψη νέων οικοδομικών έργων.',
-    subServices: [
-      'Αρχιτεκτονική Μελέτη, με γνώμονα την αρχιτεκτονική προσαρμογή του κτιρίου στο περιβάλλοντα χώρο και τις απαιτήσεις του πελάτη',
-      'Φωτορεαλιστική τρισδιάστατη απεικόνιση του υπό μελέτη κτιρίου σε πελάτες που θέλουν να δουν το υπό μελέτη κτίριο τους υλοποιημένο πριν καν κατασκευαστεί',
-      'Στατικές Μελέτες',
-    ],
-  },
-  {
-    title: 'ΕΝΕΡΓΕΙΑΚΕΣ ΕΠΙΘΕΩΡΗΣΕΙΣ',
-    image: '/images/service_4.webp',
-    longDescription:
-      'Αναλαμβάνουμε την ενεργειακή επιθεώρηση της ιδιοκτησίας σας και την έκδοση του πιστοποιητικού ενεργειακής απόδοσης σε σύντομο χρονικό διάστημα και πάντοτε σύμφωνα με τις ισχύουσες προδιαγραφές.',
-    subServices: [],
-  },
-  {
-    title: 'ΜΕΛΕΤΕΣ ΠΥΡΑΣΦΑΛΕΙΑΣ',
-
-    image: '/images/service_5.webp',
-    longDescription:
-      'Το Τεχνικό Γραφείο αναλαμβάνει την εκπόνηση μελετών εγκαταστάσεων και δικτύων ενεργητικής πυροπροστασίας και πυρασφάλειας.',
-    subServices: [],
-  },
-  {
-    title: 'ΤΕΧΝΙΚΕΣ ΕΚΘΕΣΕΙΣ',
-    image: '/images/service_6.webp',
-    longDescription:
-      'Αναλαμβάνουμε τη σύνταξη τεκμηριωμένων τεχνικών εκθέσεων προς επίλυση ιδιοκτησιακών διαφορών αμφισβήτισης ορίων, αλλά και εκθέσεων εφαρμογής τίτλων ιδιοκτησίας που μπορούν να χρησιμοποιηθούν στα αρμόδια δικαστήρια.',
-    subServices: [],
-  },
-  {
-    title: 'ΥΠΗΡΕΣΙΕΣ ΓΙΑ ΕΠΑΓΓΕΛΜΑΤΙΕΣ',
-    image: '/images/service_7.webp',
-    longDescription:
-      'Αναλαμβάνουμε την υποστήριξη επαγγελματιών του τεχνικού κλάδου (αρχιτέκτονες κ.α.) για την υλοποίηση των έργων τους, καθώς και επιχειρήσεων (λατομεία κ.α.) για την εύρυθμη λειτουργία τους (ογκομετρήσεις κ.α.). καθώς και μεγαλύτερων έργων προς διασφάλισης της ποιότητας του παραδοτέου έργου (ίδρυση και επίλυση δικτύων οριζοντιογραφικού και κατακόρυφου ελέγχου με σκοπό την αποτύπωση, χάραξη, καθώς και για τον έλεγχο μικρομετακινήσεων).',
-    subServices: [
-      'Ίδρυση/Επίλυση οδεύσεων',
-      'Ίδρυση/Επίλυση Χωροσταθμικών δικτύων',
-      'Ίδρυση/Επίλυση 2D/3D δικτύων με την μέθοδο των ελαχίστων τετραγώνων',
-      'Λεπτομερείς Τεχνικές εκθέσεις συνορθώσεων',
-      'Αποτυπώσεις-Ίδρυση Δικτύων-Χαράξεις',
-      'Ογκομετρήσεις',
-      'Τοπογραφικές Μελέτες',
-    ],
-  },
-  {
-    title: 'ΜΕΛΕΤΕΣ ΟΔΟΠΟΙΙΑΣ',
-    image: '/images/service_8.webp',
-    longDescription:
-      'Σχεδιασμός εσωτερικής οδοποιίας ακινήτων-γηπέδων, μελέτες κυκλοφοριακών συνδέσεων, μελέτες οδικών έργων.',
-    subServices: [],
-  },
-  {
-    title: 'ΜΕΛΕΤΗ-ΣΧΕΔΙΑΣΜΟΣ ΧΩΡΟΥ ΚΑΙ ΑΥΛΩΝ',
-    image: '/images/service_9.webp',
-    longDescription:
-      'Το γραφείο μελετά και σχεδιάζει χώρους πρασίνου με γνώμονα τη καλαίσθητη μετατροπή του χώρου, τις κατάλληλες κλίσεις για την απορροή τον υδάτων και τη δημιουργία μικροκλίματος με την επιλογή των κατάλληλων συστημάτων σκίασης σε συνδυασμό με τα ιδανικά φυτά-δέντρα, προσαρμοσμένο στις ανάγκες του πελάτη.',
-  },
-];
-
 interface NavigationItem {
   name: string;
   href: string;
+}
+
+interface ServiceItem {
+  title: string;
+  image: string;
+  longDescription: string;
+  subServices: string[];
+}
+
+interface StudiesItem {
+  name: string;
+}
+
+interface EquipmentDetails {
+  name: string;
+}
+
+interface Specification {
+  characteristic: string;
+  details?: EquipmentDetails[];
+}
+
+interface EquipmentItem {
+  entryName: string;
+  specifications: Specification[];
 }
 
 export default function Home() {
@@ -114,6 +55,18 @@ export default function Home() {
   const navigationItems = t('navigation', {
     returnObjects: true,
   }) as NavigationItem[];
+
+  const serviceItems = t('services', {
+    returnObjects: true,
+  }) as ServiceItem[];
+
+  const studiesItems = t('previousStudies', {
+    returnObjects: true,
+  }) as StudiesItem[];
+
+  const equipmentItems = t('equipmentEntry', {
+    returnObjects: true,
+  }) as EquipmentItem[];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -254,7 +207,7 @@ export default function Home() {
                     className='mr-4'
                     onClick={() => handleNavigation(1)}
                   >
-                    {t('services')}
+                    {t('service')}
                   </Button>
                   <Button
                     size='lg'
@@ -262,7 +215,7 @@ export default function Home() {
                     className='text-black'
                     onClick={() => handleNavigation(3)}
                   >
-                    Επικοινωνία
+                    {t('contact')}
                   </Button>
                 </div>
               </div>
@@ -273,23 +226,19 @@ export default function Home() {
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
               <h2 className='text-xl font-bold mb-4 text-center'>
-                ΕΠΑΓΓΕΛΜΑΤΙΚΕΣ ΥΠΗΡΕΣΙΕΣ
+                {t('servicesHeader')}
               </h2>
 
               <p className='text-muted-foreground text-center max-w-2xl mx-auto'>
-                Υπηρεσίες που παρέχουμε
+                {t('servicesSubtitle')}
               </p>
               <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk] max-w-4xl mx-auto'>
                 <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto'>
-                  Κάθε δικαιοπραξία που έχει ώς αντικείμενο Αγοραπωλησία, Γονική
-                  παροχή, Δωρεά κλπ, πρέπει να συνοδεύεται από τοπογραφικό
-                  διάγραμμα (ν.651/77, άρ. 5). Πέρα όμως από την απαίτηση του
-                  νόμου, το σωστό τοπογραφικό διάγραμμα εξασφαλίζει την ακριβή
-                  θέση των ορίων του ακινήτου σας επ'αόριστον.
+                  {t('servicesDisclaimer')}
                 </p>
               </div>
               <div className='grid lg:grid-cols-3 gap-8 text-center max-w-7xl mx-auto py-8 mb-4'>
-                {services.map((service, index) => (
+                {serviceItems.map((service, index) => (
                   <div
                     key={index}
                     className='rounded-lg overflow-hidden transition-all hover:shadow-lg bg-card border border-gray-150'
@@ -345,14 +294,9 @@ export default function Home() {
                       <div className='h-1 w-20 bg-primary rounded-full' />
                     </div>
                     <ul className='space-y-3 text-lg text-muted-foreground leading-relaxed'>
-                      <ListItem text='Αποτύπωση έκτασης για μίσθωση Παραλίας στη Νάξο.' />
-                      <ListItem text='Αποτύπωση γηπέδου για σύνταξη συμβολαίου.' />
-                      <ListItem text='Τεχνική έκθεση φωτοερμηνείας απόδειξης ύπαρξης δρόμου από το έτος 1945.' />
-                      <ListItem text='Νομιμοποίηση κτίσματος με το ν.4178/13.' />
-                      <ListItem text='Ρύθμιση αυθαίρετων κατασκευών με το ν.4178/13.' />
-                      <ListItem text='Τεχνικές εκθέσεις Πραγματογνωμοσύνης.' />
-                      <ListItem text='Ενεργειακές Επιθεώρησεις.' />
-                      <ListItem text='Σύνταξη τοπογραφικών διαγραμμάτων με χρήση Gnss και απόδοση υψομετρικών καμπύλων.' />
+                      {studiesItems.map((study, index) => (
+                        <ListItem key={index} text={study.name} />
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -361,75 +305,39 @@ export default function Home() {
                   <div className='space-y-6'>
                     <div className='inline-block'>
                       <h2 className='text-3xl font-bold mb-2'>
-                        Τοπογραφικός Εξοπλισμός
+                        {t('equipmentSectionTitle')}
                       </h2>
                       <div className='h-1 w-20 bg-primary rounded-full' />
                     </div>
                     <ul className='list-disc list-inside space-y-4 text-gray-800'>
-                      <li>
-                        <span className='font-semibold'>
-                          Γεωδαιτικός δέκτης κινηματικών μετρήσεων:
-                        </span>
-                        <ul className=' pl-6 mt-2 text-sm text-gray-600'>
-                          <li>
-                            Ακρίβεια RTK:
-                            <ul className='pl-6'>
-                              <li>H: 8mm ± 1ppm (rms)</li>
-                              <li>V: 15mm ± 1ppm (rms)</li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <span className='font-semibold'>
-                          Γεωδαιτικοί δέκτες στατικών και κινηματικών μετρήσεων:
-                        </span>
-                        <ul className=' pl-6 mt-2 text-sm text-gray-600'>
-                          <li>
-                            Ακρίβεια static:
-                            <ul className='pl-6'>
-                              <li>H: 5mm + 1ppm</li>
-                              <li>V: 10 mm + 2 ppm</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <br />
-                            Ακρίβεια RTK:
-                            <ul className='pl-6'>
-                              <li>H: 7 mm + 1 ppm</li>
-                              <li>V: 14 mm + 2 ppm</li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <span className='font-semibold'>
-                          Ολοκληρωμένος γεωδαιτικός σταθμός:
-                        </span>
-                        <ul className='pl-6 mt-2 text-sm text-gray-600'>
-                          <li>Γωνιακή ακρίβεια: 6cc (2″)</li>
-                          <li>
-                            Μέτρηση με ένα πρίσμα έως 5.000m με ακρίβεια
-                            ±2mm+2ppm
-                          </li>
-                          <li>
-                            Μέτρηση χωρίς πρίσμα έως 600m με ακρίβεια ±3mm+2ppm
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <span className='font-semibold'>
-                          Περιστροφικό laser για μέτρηση υψομέτρων στο πεδίο
-                        </span>
-                      </li>
-                      <li>
-                        <span className='font-semibold'>
-                          Dji drone για αεροφωτογραφήσεις:
-                        </span>
-                        <ul className=' pl-6 mt-2 text-sm text-gray-600'>
-                          <li>Μέγεθος εικόνας: 42mp</li>
-                        </ul>
-                      </li>
+                      {equipmentItems.map((entry, index) => (
+                        <li key={index}>
+                          <span className='font-semibold'>
+                            {entry.entryName}
+                          </span>
+                          <ul className=' pl-6 mt-2 text-sm text-gray-600'>
+                            {entry.specifications.map(
+                              (specification, index) => (
+                                <Fragment key={index}>
+                                  <li>
+                                    {specification.characteristic}
+                                    {specification.details && (
+                                      <ul className='pl-6'>
+                                        {specification.details.map(
+                                          (detail, index) => (
+                                            <li key={index}>{detail.name}</li>
+                                          ),
+                                        )}
+                                      </ul>
+                                    )}
+                                  </li>
+                                  <br />
+                                </Fragment>
+                              ),
+                            )}
+                          </ul>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
@@ -451,7 +359,7 @@ export default function Home() {
                 <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-12'>
                   <div>
                     <h2 className='text-3xl font-bold mb-8'>
-                      Επικοινωνήστε μαζί μας
+                      {t('contactUs')}
                     </h2>
 
                     <div className='space-y-8'>
@@ -460,7 +368,7 @@ export default function Home() {
                           <Mail className='h-6 w-6 text-primary' />
                         </div>
                         <div>
-                          <h3 className='font-medium'>Email</h3>
+                          <h3 className='font-medium'>{t('contactEmail')}</h3>
                           <p className='text-muted-foreground'>
                             topographypolitis@gmail.com
                           </p>
@@ -472,7 +380,7 @@ export default function Home() {
                           <Phone className='h-6 w-6 text-primary' />
                         </div>
                         <div>
-                          <h3 className='font-medium'>Phone</h3>
+                          <h3 className='font-medium'>{t('contactPhone')}</h3>
                           <p className='text-muted-foreground'>
                             +30 6975518942
                           </p>
@@ -486,7 +394,7 @@ export default function Home() {
                       <div className='grid md:grid-cols-2 gap-4'>
                         <div>
                           <label className='block text-sm font-medium mb-2'>
-                            Όνομα
+                            {t('contactFirstName')}
                           </label>
                           <input
                             type='text'
@@ -496,7 +404,7 @@ export default function Home() {
                         </div>
                         <div>
                           <label className='block text-sm font-medium mb-2'>
-                            Επώνυμο
+                            {t('contactLastName')}
                           </label>
                           <input
                             type='text'
@@ -508,7 +416,7 @@ export default function Home() {
 
                       <div>
                         <label className='block text-sm font-medium mb-2'>
-                          Ηλεκτρονική Διεύθυνση
+                          {t('contactEmail')}
                         </label>
                         <input
                           type='email'
@@ -519,7 +427,7 @@ export default function Home() {
 
                       <div>
                         <label className='block text-sm font-medium mb-2'>
-                          Μήνυμα
+                          {t('contactMessage')}
                         </label>
                         <textarea
                           placeholder='Το μήνυμά σας...'
@@ -532,7 +440,7 @@ export default function Home() {
                         className='w-full'
                         size='lg'
                       >
-                        <Send className='mr-2 h-4 w-4' /> Αποστολή
+                        <Send className='mr-2 h-4 w-4' /> {t('contactSend')}
                       </Button>
                     </form>
                   </div>
