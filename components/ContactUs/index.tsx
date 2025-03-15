@@ -128,7 +128,7 @@ export default function ContactUs() {
               </label>
               <textarea
                 name='message'
-                placeholder='Το μήνυμά σας...'
+                placeholder={t('contactMessagePlaceholder')}
                 className='w-full px-4 py-2 rounded-md border bg-background h-32'
                 value={formData.message}
                 onChange={handleChange}

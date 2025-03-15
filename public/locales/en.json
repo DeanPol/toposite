@@ -5,7 +5,8 @@
     { "name": "ABOUT", "href": "#about" },
     { "name": "CONTACT", "href": "#contact" }
   ],
-  "headerTitle": "Technical Study Office",
+  "headerTitle": "Technical Office",
+  "headerName": "POLITIS EDWARD-ODYSSEUS",
   "services": [
     {
       "title": "TOPOGRAPHIC STUDIES",
@@ -22,7 +23,7 @@
     {
       "title": "TECHNICAL PHOTOINTERPRETATION REPORTS",
       "image": "/images/service_2.webp",
-      "longDescription": "Photointerpretation is the process by which, using aerial photographs and satellite images from public and private services, we can document the characterization of land in relation to applicable forest legislation (whether forested or not), the type of vegetation and crops within the examined property, determine the geomorphology of the terrain, prove the existence or absence of roads, old paths, streams, buildings, or other constructions (cultivation terraces, dry stone walls, etc.) at specific dates. The technical reports produced are submitted to the competent courts and various services for cases of property disputes, illegal constructions, encroachments, etc.",
+      "longDescription": "Photointerpretation is the process by which, using aerial photographs and satellite images from public and private services, we can document the characterization of land in relation to applicable forest legislation (whether forested or not), the type of vegetation and crops within the examined property, determine the geomorphology of the terrain, prove the existence or absence of roads, old paths, streams, buildings, or other constructions (cultivated land, dry stone walls, etc.) at specific dates. The technical reports produced are submitted to court and various services for cases of property disputes, illegal constructions, encroachments, etc.",
       "subServices": []
     },
     {
@@ -50,17 +51,17 @@
     {
       "title": "TECHNICAL REPORTS",
       "image": "/images/service_6.webp",
-      "longDescription": "We undertake the preparation of well-documented technical reports to resolve property disputes, boundary disputes, as well as reports on the application of property titles that can be used in the competent courts.",
+      "longDescription": "We undertake the preparation of well-documented technical reports to resolve property disputes, boundary disputes, as well as reports on the application of property titles that can be used in court.",
       "subServices": []
     },
     {
       "title": "SERVICES FOR PROFESSIONALS",
       "image": "/images/service_7.webp",
-      "longDescription": "We provide support for professionals in the technical sector (architects, etc.) in the implementation of their projects, as well as for businesses (quarries, etc.) to ensure their smooth operation (volume calculations, etc.), and for larger projects to ensure the quality of the final deliverable (establishment and resolution of horizontal and vertical control networks for mapping, staking, and monitoring micro-movements).",
+      "longDescription": "We provide support for professionals in the technical sector (architects, etc.) in the implementation of their projects, as well as for businesses (quarries, etc.) to ensure their smooth operation (volume calculations, etc.), and for larger projects to ensure the quality of the final deliverable (establishment and calculation of horizontal and vertical control networks for mapping, staking, and monitoring micro-movements).",
       "subServices": [
-        "Establishment/Resolution of traverses",
-        "Establishment/Resolution of Leveling Networks",
-        "Establishment/Resolution of 2D/3D networks using the least squares method",
+        "Establishment/Calculation of traverses",
+        "Establishment/Calculation of Leveling Networks",
+        "Establishment/Calculation of 2D/3D networks using the least squares method",
         "Detailed Technical Reports on Adjustments",
         "Mapping - Network Establishment - Staking",
         "Volume Calculations",
@@ -92,11 +93,11 @@
       "name": "Technical report on photointerpretation proving the existence of a road since 1945."
     },
     { "name": "Legalization of a building under Law 4178/13." },
-    { "name": "Regulation of unauthorized constructions under Law 4178/13." },
+    { "name": "Declaration of unauthorized constructions under Law 4178/13." },
     { "name": "Expert Reports." },
     { "name": "Energy Inspections." },
     {
-      "name": "Preparation of topographic diagrams using GNSS and rendering of elevation contours."
+      "name": "Preparation of topographic diagrams using Gnss and laser scanners."
     }
   ],
   "equipmentSectionTitle": "Surveying Equipment",
@@ -155,6 +156,7 @@
   "contactLastName": "Last Name",
   "contactEmail": "Email Address",
   "contactMessage": "Message",
+  "contactMessagePlaceholder": "Type your message...",
   "contactSend": "Send",
   "contactStatusFail": "Error sending email. Please try again.",
   "contactStatusSuccess": "Email sent successfully. Thank you."

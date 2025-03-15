@@ -6,7 +6,12 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/sheet';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/carousel';
 import ContactUs from '@/components/ContactUs';
 
@@ -85,8 +90,6 @@ export default function Home() {
               />
             </button>
 
-            {/*  <LanguageSwitcher /> */}
-
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center gap-6'>
               {navigationItems.map((item, index) => (
@@ -103,6 +106,7 @@ export default function Home() {
                   {item.name}
                 </button>
               ))}
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Navigation */}
@@ -113,6 +117,7 @@ export default function Home() {
                 </Button>
               </SheetTrigger>
               <SheetContent>
+                <SheetTitle></SheetTitle>
                 <div className='flex flex-col gap-4 mt-8'>
                   {navigationItems.map((item, index) => (
                     <button
@@ -130,6 +135,7 @@ export default function Home() {
                       {item.name}
                     </button>
                   ))}
+                  <LanguageSwitcher />
                 </div>
               </SheetContent>
             </Sheet>

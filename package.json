@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@radix-ui/react-dialog": "^1.1.4",
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
