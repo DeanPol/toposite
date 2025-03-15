@@ -163,5 +163,7 @@
   "contactLastName": "Επώνυμο",
   "contactEmail": "Ηλεκτρονική Διεύθυνση",
   "contactMessage": "Μήνυμα",
-  "contactSend": "Αποστολή"
+  "contactSend": "Αποστολή",
+  "contactStatusFail": "Παρουσιάστηκε κάποιο σφάλμα. Παρακαλούμε προσπαθήστε ξανά.",
+  "contactStatusSuccess": "Το μήνυμα στάλθηκε επιτυχώς. Ευχαριστούμε."
 }

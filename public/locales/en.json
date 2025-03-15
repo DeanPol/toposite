@@ -155,5 +155,7 @@
   "contactLastName": "Last Name",
   "contactEmail": "Email Address",
   "contactMessage": "Message",
-  "contactSend": "Send"
+  "contactSend": "Send",
+  "contactStatusFail": "Error sending email. Please try again.",
+  "contactStatusSuccess": "Email sent successfully. Thank you."
 }
