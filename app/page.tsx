@@ -85,7 +85,7 @@ export default function Home() {
               />
             </button>
 
-            <LanguageSwitcher />
+            {/*  <LanguageSwitcher /> */}
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center gap-6'>
