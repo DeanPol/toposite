@@ -4,5 +4,156 @@
     { "name": "SERVICES", "href": "#services" },
     { "name": "ABOUT", "href": "#about" },
     { "name": "CONTACT", "href": "#contact" }
-  ]
+  ],
+  "headerTitle": "Technical Study Office",
+  "services": [
+    {
+      "title": "TOPOGRAPHIC STUDIES",
+      "image": "/images/service_1.webp",
+      "longDescription": "We undertake the detailed and accurate mapping of your property according to the coordinate projection systems used in Greece, such as the Hellenic Geodetic Reference System 1987, always in compliance with the applicable specifications.",
+      "subServices": [
+        "Topographic Diagram for the National Cadastre",
+        "Topographic Survey for the Forest Service Characterization Act",
+        "Topographic Survey for Building Permit",
+        "Topographic Survey for Property Sale",
+        "Topographic Survey for Subdivision, etc."
+      ]
+    },
+    {
+      "title": "TECHNICAL PHOTOINTERPRETATION REPORTS",
+      "image": "/images/service_2.webp",
+      "longDescription": "Photointerpretation is the process by which, using aerial photographs and satellite images from public and private services, we can document the characterization of land in relation to applicable forest legislation (whether forested or not), the type of vegetation and crops within the examined property, determine the geomorphology of the terrain, prove the existence or absence of roads, old paths, streams, buildings, or other constructions (cultivation terraces, dry stone walls, etc.) at specific dates. The technical reports produced are submitted to the competent courts and various services for cases of property disputes, illegal constructions, encroachments, etc.",
+      "subServices": []
+    },
+    {
+      "title": "BUILDING PERMITS",
+      "image": "/images/service_3.webp",
+      "longDescription": "We undertake all the necessary studies as well as the supervision of new building projects.",
+      "subServices": [
+        "Architectural Study, taking into account the architectural adaptation of the building to the surrounding environment and the client’s requirements",
+        "Photorealistic 3D visualization of the building under study for clients who want to see their planned building before construction begins",
+        "Structural Studies"
+      ]
+    },
+    {
+      "title": "ENERGY INSPECTIONS",
+      "image": "/images/service_4.webp",
+      "longDescription": "We undertake the energy inspection of your property and the issuance of the energy performance certificate in a short period of time, always in accordance with applicable specifications.",
+      "subServices": []
+    },
+    {
+      "title": "FIRE SAFETY STUDIES",
+      "image": "/images/service_5.webp",
+      "longDescription": "The Technical Office undertakes the preparation of studies for fire protection and active fire safety systems.",
+      "subServices": []
+    },
+    {
+      "title": "TECHNICAL REPORTS",
+      "image": "/images/service_6.webp",
+      "longDescription": "We undertake the preparation of well-documented technical reports to resolve property disputes, boundary disputes, as well as reports on the application of property titles that can be used in the competent courts.",
+      "subServices": []
+    },
+    {
+      "title": "SERVICES FOR PROFESSIONALS",
+      "image": "/images/service_7.webp",
+      "longDescription": "We provide support for professionals in the technical sector (architects, etc.) in the implementation of their projects, as well as for businesses (quarries, etc.) to ensure their smooth operation (volume calculations, etc.), and for larger projects to ensure the quality of the final deliverable (establishment and resolution of horizontal and vertical control networks for mapping, staking, and monitoring micro-movements).",
+      "subServices": [
+        "Establishment/Resolution of traverses",
+        "Establishment/Resolution of Leveling Networks",
+        "Establishment/Resolution of 2D/3D networks using the least squares method",
+        "Detailed Technical Reports on Adjustments",
+        "Mapping - Network Establishment - Staking",
+        "Volume Calculations",
+        "Topographic Studies"
+      ]
+    },
+    {
+      "title": "ROAD DESIGN STUDIES",
+      "image": "/images/service_8.webp",
+      "longDescription": "Design of internal road networks for properties and land, traffic connection studies, road project studies.",
+      "subServices": []
+    },
+    {
+      "title": "SPACE AND YARD DESIGN STUDIES",
+      "image": "/images/service_9.webp",
+      "longDescription": "Our office designs and plans green spaces with an emphasis on aesthetically pleasing transformations, appropriate slopes for water drainage, and the creation of a microclimate using suitable shading systems in combination with ideal plants and trees, tailored to the client’s needs."
+    }
+  ],
+  "service": "SERVICES",
+  "contact": "CONTACT",
+  "servicesHeader": "PROFESSIONAL SERVICES",
+  "servicesSubtitle": "Services We Provide",
+  "servicesDisclaimer": "Every legal transaction involving Sale, Parental Grant, Donation, etc., must be accompanied by a topographic diagram (Law 651/77, Article 5). However, beyond legal requirements, an accurate topographic diagram ensures the precise positioning of your property boundaries indefinitely.",
+  "studiesSectionTitle": "Indicative Studies",
+  "previousStudies": [
+    { "name": "Surveying of an area for beach rental in Naxos." },
+    { "name": "Surveying of a plot for contract drafting." },
+    {
+      "name": "Technical report on photointerpretation proving the existence of a road since 1945."
+    },
+    { "name": "Legalization of a building under Law 4178/13." },
+    { "name": "Regulation of unauthorized constructions under Law 4178/13." },
+    { "name": "Expert Reports." },
+    { "name": "Energy Inspections." },
+    {
+      "name": "Preparation of topographic diagrams using GNSS and rendering of elevation contours."
+    }
+  ],
+  "equipmentSectionTitle": "Surveying Equipment",
+  "equipmentEntry": [
+    {
+      "entryName": "Geodetic receiver for kinematic measurements:",
+      "specifications": [
+        {
+          "characteristic": "RTK Accuracy:",
+          "details": [
+            { "name": "H: 8mm ± 1ppm (rms)" },
+            { "name": "V: 15mm ± 1ppm (rms)" }
+          ]
+        }
+      ]
+    },
+    {
+      "entryName": "Geodetic receivers for static and kinematic measurements:",
+      "specifications": [
+        {
+          "characteristic": "Static Accuracy:",
+          "details": [{ "name": "H: 5mm + 1ppm" }, { "name": "V: 10mm + 2ppm" }]
+        },
+        {
+          "characteristic": "RTK Accuracy:",
+          "details": [{ "name": "H: 7mm + 1ppm" }, { "name": "V: 14mm + 2ppm" }]
+        }
+      ]
+    },
+    {
+      "entryName": "Total Station:",
+      "specifications": [
+        {
+          "characteristic": "Angular accuracy: 6cc (2″)"
+        },
+        {
+          "characteristic": "Measurement with a single prism up to 5,000m with an accuracy of ±2mm+2ppm"
+        },
+        {
+          "characteristic": "Measurement without a prism up to 600m with an accuracy of ±3mm+2ppm"
+        }
+      ]
+    },
+    {
+      "entryName": "Dji drone for aerial photography:",
+      "specifications": [
+        {
+          "characteristic": "Image size: 42MP"
+        }
+      ]
+    }
+  ],
+  "contactPhone": "Phone",
+  "contactUs": "Contact Us",
+  "contactFirstName": "First Name",
+  "contactLastName": "Last Name",
+  "contactEmail": "Email Address",
+  "contactMessage": "Message",
+  "contactSend": "Send"
 }

@@ -195,10 +195,10 @@ export default function Home() {
               <div className='relative container mx-auto px-4 text-center text-white'>
                 <div className='mb-12'>
                   <h1 className='text-xl md:text-4xl font-bold mb-6 tracking-tight'>
-                    Τεχνικό Μελετητικό Γραφείο
+                    {t('headerTitle')}
                   </h1>
                   <h1 className='text-4xl md:text-6xl font-bold mb-6 tracking-tight'>
-                    ΠΟΛΙΤΗΣ ΕΔΟΥΑΡΔΟΣ-ΟΔΥΣΣΕΑΣ
+                    {t('headerName')}
                   </h1>
                 </div>
                 <div className='mt-16'>
@@ -289,7 +289,7 @@ export default function Home() {
                   <div className='space-y-6'>
                     <div className='inline-block'>
                       <h2 className='text-3xl font-bold mb-2'>
-                        Ενδεικτικές Μελέτες
+                        {t('studiesSectionTitle')}
                       </h2>
                       <div className='h-1 w-20 bg-primary rounded-full' />
                     </div>
@@ -361,7 +361,6 @@ export default function Home() {
                     <h2 className='text-3xl font-bold mb-8'>
                       {t('contactUs')}
                     </h2>
-
                     <div className='space-y-8'>
                       <div className='flex items-center gap-4'>
                         <div className='bg-primary/10 p-3 rounded-full'>
