@@ -1,53 +1,31 @@
 'use client';
 
-import { Menu, Mail, Phone, Send, ChevronRight } from 'lucide-react';
+import { Menu } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import { Button } from '@/components/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/sheet';
-import ListItem from '@/components/list';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/carousel';
-import { cn } from '@/lib/utils';
-import { useState, useEffect, Fragment } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import ContactUs from '@/components/ContactUs';
 
 import '../i18n';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import AboutUs from '@/components/AboutUs';
+import Services from '@/components/Services';
 
 interface NavigationItem {
   name: string;
   href: string;
 }
 
-interface ServiceItem {
-  title: string;
-  image: string;
-  longDescription: string;
-  subServices: string[];
-}
-
-interface StudiesItem {
-  name: string;
-}
-
-interface EquipmentDetails {
-  name: string;
-}
-
-interface Specification {
-  characteristic: string;
-  details?: EquipmentDetails[];
-}
-
-interface EquipmentItem {
-  entryName: string;
-  specifications: Specification[];
-}
-
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [activeSection, setActiveSection] = useState(0);
+  const [activeSection, setActiveSection] = useState<number>(0);
   const sections = ['home', 'services', 'about', 'contact'];
 
   const { t, i18n } = useTranslation();
@@ -55,18 +33,6 @@ export default function Home() {
   const navigationItems = t('navigation', {
     returnObjects: true,
   }) as NavigationItem[];
-
-  const serviceItems = t('services', {
-    returnObjects: true,
-  }) as ServiceItem[];
-
-  const studiesItems = t('previousStudies', {
-    returnObjects: true,
-  }) as StudiesItem[];
-
-  const equipmentItems = t('equipmentEntry', {
-    returnObjects: true,
-  }) as EquipmentItem[];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -225,226 +191,21 @@ export default function Home() {
           {/* Services Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <h2 className='text-xl font-bold mb-4 text-center'>
-                {t('servicesHeader')}
-              </h2>
-
-              <p className='text-muted-foreground text-center max-w-2xl mx-auto'>
-                {t('servicesSubtitle')}
-              </p>
-              <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk] max-w-4xl mx-auto'>
-                <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto'>
-                  {t('servicesDisclaimer')}
-                </p>
-              </div>
-              <div className='grid lg:grid-cols-3 gap-8 text-center max-w-7xl mx-auto py-8 mb-4'>
-                {serviceItems.map((service, index) => (
-                  <div
-                    key={index}
-                    className='rounded-lg overflow-hidden transition-all hover:shadow-lg bg-card border border-gray-150'
-                  >
-                    <div className='aspect-video overflow-hidden border-b border-border/50'>
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-muted'
-                      />
-                    </div>
-                    <div className='p-6'>
-                      <h3 className='text-2xl font-semibold mb-4'>
-                        {service.title}
-                      </h3>
-                      <p className='text-muted-foreground mb-6'>
-                        {service.longDescription}
-                      </p>
-                      <div className='mt-6'>
-                        <ul className='space-y-2'>
-                          {service.subServices?.map((subService, idx) => (
-                            <li key={idx} className='flex items-start gap-2'>
-                              <ChevronRight className='h-5 w-5 text-primary flex-shrink-0 mt-0.5' />
-                              <span className='text-left'>{subService}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <Services />
             </section>
           </CarouselItem>
 
           {/* About Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted py-[8rem]'>
-              <div className='container mx-auto p-8 bg-card rounded'>
-                <div className='grid md:grid-cols-2 gap-12 items-center'>
-                  <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
-                    <img
-                      src='/images/header_banner.webp'
-                      alt='Our team collaborating'
-                      className='w-full h-full object-cover'
-                    />
-                  </div>
-                  <div className='space-y-6'>
-                    <div className='inline-block'>
-                      <h2 className='text-3xl font-bold mb-2'>
-                        {t('studiesSectionTitle')}
-                      </h2>
-                      <div className='h-1 w-20 bg-primary rounded-full' />
-                    </div>
-                    <ul className='space-y-3 text-lg text-muted-foreground leading-relaxed'>
-                      {studiesItems.map((study, index) => (
-                        <ListItem key={index} text={study.name} />
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className='grid md:grid-cols-2 gap-12 items-center mt-12'>
-                  <div className='space-y-6'>
-                    <div className='inline-block'>
-                      <h2 className='text-3xl font-bold mb-2'>
-                        {t('equipmentSectionTitle')}
-                      </h2>
-                      <div className='h-1 w-20 bg-primary rounded-full' />
-                    </div>
-                    <ul className='list-disc list-inside space-y-4 text-gray-800'>
-                      {equipmentItems.map((entry, index) => (
-                        <li key={index}>
-                          <span className='font-semibold'>
-                            {entry.entryName}
-                          </span>
-                          <ul className=' pl-6 mt-2 text-sm text-gray-600'>
-                            {entry.specifications.map(
-                              (specification, index) => (
-                                <Fragment key={index}>
-                                  <li>
-                                    {specification.characteristic}
-                                    {specification.details && (
-                                      <ul className='pl-6'>
-                                        {specification.details.map(
-                                          (detail, index) => (
-                                            <li key={index}>{detail.name}</li>
-                                          ),
-                                        )}
-                                      </ul>
-                                    )}
-                                  </li>
-                                  <br />
-                                </Fragment>
-                              ),
-                            )}
-                          </ul>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
-                    <img
-                      src='/images/equipment.webp'
-                      alt='Our team collaborating'
-                      className='w-full h-full object-cover'
-                    />
-                  </div>
-                </div>
-              </div>
+              <AboutUs />
             </section>
           </CarouselItem>
 
           {/* Contact Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <div className='container mx-auto px-4'>
-                <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-12'>
-                  <div>
-                    <h2 className='text-3xl font-bold mb-8'>
-                      {t('contactUs')}
-                    </h2>
-                    <div className='space-y-8'>
-                      <div className='flex items-center gap-4'>
-                        <div className='bg-primary/10 p-3 rounded-full'>
-                          <Mail className='h-6 w-6 text-primary' />
-                        </div>
-                        <div>
-                          <h3 className='font-medium'>{t('contactEmail')}</h3>
-                          <p className='text-muted-foreground'>
-                            topographypolitis@gmail.com
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className='flex items-center gap-4'>
-                        <div className='bg-primary/10 p-3 rounded-full'>
-                          <Phone className='h-6 w-6 text-primary' />
-                        </div>
-                        <div>
-                          <h3 className='font-medium'>{t('contactPhone')}</h3>
-                          <p className='text-muted-foreground'>
-                            +30 6975518942
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='bg-card p-8 rounded-lg shadow-lg'>
-                    <form className='space-y-6'>
-                      <div className='grid md:grid-cols-2 gap-4'>
-                        <div>
-                          <label className='block text-sm font-medium mb-2'>
-                            {t('contactFirstName')}
-                          </label>
-                          <input
-                            type='text'
-                            className='w-full px-4 py-2 rounded-md border bg-background'
-                            placeholder='John'
-                          />
-                        </div>
-                        <div>
-                          <label className='block text-sm font-medium mb-2'>
-                            {t('contactLastName')}
-                          </label>
-                          <input
-                            type='text'
-                            className='w-full px-4 py-2 rounded-md border bg-background'
-                            placeholder='Doe'
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className='block text-sm font-medium mb-2'>
-                          {t('contactEmail')}
-                        </label>
-                        <input
-                          type='email'
-                          className='w-full px-4 py-2 rounded-md border bg-background'
-                          placeholder='john@example.com'
-                        />
-                      </div>
-
-                      <div>
-                        <label className='block text-sm font-medium mb-2'>
-                          {t('contactMessage')}
-                        </label>
-                        <textarea
-                          placeholder='Το μήνυμά σας...'
-                          className='w-full px-4 py-2 rounded-md border bg-background h-32'
-                        />
-                      </div>
-
-                      <Button
-                        aria-label='Send Message'
-                        className='w-full'
-                        size='lg'
-                      >
-                        <Send className='mr-2 h-4 w-4' /> {t('contactSend')}
-                      </Button>
-                    </form>
-                  </div>
-                </div>
-              </div>
+              <ContactUs />
             </section>
           </CarouselItem>
         </CarouselContent>
