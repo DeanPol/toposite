@@ -153,5 +153,12 @@
         }
       ]
     }
-  ]
+  ],
+  "contactPhone": "Τηλέφωνο",
+  "contactUs": "Επικοινωνήστε μαζί μας",
+  "contactFirstName": "Όνομα",
+  "contactLastName": "Επώνυμο",
+  "contactEmail": "Ηλεκτρονική Διεύθυνση",
+  "contactMessage": "Μήνυμα",
+  "contactSend": "Αποστολή"
 }
