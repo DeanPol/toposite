@@ -33,11 +33,7 @@ const ResponsiveImage = ({
 
   return (
     <Image
-      src={
-        isMobile
-          ? `/images/compressed/mobile/${fileName}`
-          : `/images/compressed/${fileName}`
-      }
+      src={isMobile ? `/images/mobile/${fileName}` : `/images/${fileName}`}
       alt={imageDescription}
       width={isMobile ? mobileWidth : desktopWidth}
       height={isMobile ? mobileHeight : desktopHeight}
