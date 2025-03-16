@@ -46,16 +46,18 @@ export default function Services() {
               <p className='text-muted-foreground mb-6'>
                 {service.longDescription}
               </p>
-              <div className='mt-6'>
-                <ul className='space-y-2'>
-                  {service.subServices?.map((subService, idx) => (
-                    <li key={idx} className='flex items-start gap-2'>
-                      <ChevronRight className='h-5 w-5 text-primary flex-shrink-0 mt-0.5' />
-                      <span className='text-left'>{subService}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {service.subServices && (
+                <div className='mt-6'>
+                  <ul className='space-y-2'>
+                    {service.subServices.map((subService, idx) => (
+                      <li key={idx} className='flex items-start gap-2'>
+                        <ChevronRight className='h-5 w-5 text-primary flex-shrink-0 mt-0.5' />
+                        <span className='text-left'>{subService}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         ))}

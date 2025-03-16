@@ -68,154 +68,156 @@ export default function Home() {
   };
 
   return (
-    <div className='min-h-screen bg-background'>
-      {/* Navbar */}
-      <header
-        className={cn(
-          'fixed top-0 w-full z-50 transition-all duration-300',
-          isScrolled
-            ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b'
-            : 'bg-transparent',
-        )}
-      >
-        <nav className='px-4 h-[5rem] bg-card content-center'>
-          <div className='max-w-7xl mx-auto flex items-center justify-between'>
-            <button onClick={() => returnToHome()}>
-              <img
-                alt='Site Logo'
-                src='/images/site_logo.webp'
-                className='h-[60px]'
-                height={60}
-                width={80}
-              />
-            </button>
-
-            {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center gap-6'>
-              {navigationItems.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleNavigation(index)}
-                  className={cn(
-                    'text-sm font-medium transition-colors',
-                    activeSection === index
-                      ? 'text-primary'
-                      : 'hover:text-primary',
-                  )}
-                >
-                  {item.name}
-                </button>
-              ))}
-              <LanguageSwitcher />
-            </div>
-
-            {/* Mobile Navigation */}
-            <Sheet>
-              <SheetTrigger asChild className='md:hidden'>
-                <Button aria-label='Burger Menu' variant='ghost' size='icon'>
-                  <Menu className='h-6 w-6' />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <SheetTitle></SheetTitle>
-                <div className='flex flex-col gap-4 mt-8'>
-                  {navigationItems.map((item, index) => (
-                    <button
-                      key={item.name}
-                      onClick={() => {
-                        handleNavigation(index);
-                      }}
-                      className={cn(
-                        'text-lg font-medium transition-colors text-left',
-                        activeSection === index
-                          ? 'text-primary'
-                          : 'hover:text-primary',
-                      )}
-                    >
-                      {item.name}
-                    </button>
-                  ))}
-                  <LanguageSwitcher />
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </nav>
-      </header>
-
-      <Carousel
-        className='w-full h-screen'
-        selectedIndex={activeSection}
-        setSelectedIndex={setActiveSection}
-        opts={{
-          align: 'start',
-          loop: false,
-        }}
-      >
-        <CarouselContent>
-          {/* Hero Banner */}
-          <CarouselItem className='w-full'>
-            <section className='relative h-screen flex items-center justify-center'>
-              <div className='absolute inset-0'>
+    <>
+      <div className='min-h-screen bg-background'>
+        {/* Navbar */}
+        <header
+          className={cn(
+            'fixed top-0 w-full z-50 transition-all duration-300',
+            isScrolled
+              ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b'
+              : 'bg-transparent',
+          )}
+        >
+          <nav className='px-4 h-[5rem] bg-card content-center'>
+            <div className='max-w-7xl mx-auto flex items-center justify-between'>
+              <button onClick={() => returnToHome()}>
                 <img
-                  src='/images/header_fit.webp'
-                  alt='Hero background'
-                  className='w-full h-full object-cover'
+                  alt='Site Logo'
+                  src='/images/site_logo.webp'
+                  className='h-[60px]'
+                  height={60}
+                  width={80}
                 />
-                <div className='absolute inset-0 bg-black/50' />
-              </div>
-              <div className='relative container mx-auto px-4 text-center text-white'>
-                <div className='mb-12'>
-                  <h1 className='text-xl md:text-4xl font-bold mb-6 tracking-tight'>
-                    {t('headerTitle')}
-                  </h1>
-                  <h1 className='text-4xl md:text-6xl font-bold mb-6 tracking-tight'>
-                    {t('headerName')}
-                  </h1>
-                </div>
-                <div className='mt-16'>
-                  <Button
-                    size='lg'
-                    className='mr-4'
-                    onClick={() => handleNavigation(1)}
+              </button>
+
+              {/* Desktop Navigation */}
+              <div className='hidden md:flex items-center gap-6'>
+                {navigationItems.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleNavigation(index)}
+                    className={cn(
+                      'text-sm font-medium transition-colors',
+                      activeSection === index
+                        ? 'text-primary'
+                        : 'hover:text-primary',
+                    )}
                   >
-                    {t('service')}
-                  </Button>
-                  <Button
-                    size='lg'
-                    variant='outline'
-                    className='text-black'
-                    onClick={() => handleNavigation(3)}
-                  >
-                    {t('contact')}
-                  </Button>
-                </div>
+                    {item.name}
+                  </button>
+                ))}
+                <LanguageSwitcher />
               </div>
-            </section>
-          </CarouselItem>
 
-          {/* Services Section */}
-          <CarouselItem className='w-full'>
-            <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <Services />
-            </section>
-          </CarouselItem>
+              {/* Mobile Navigation */}
+              <Sheet>
+                <SheetTrigger asChild className='md:hidden'>
+                  <Button aria-label='Burger Menu' variant='ghost' size='icon'>
+                    <Menu className='h-6 w-6' />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetTitle></SheetTitle>
+                  <div className='flex flex-col gap-4 mt-8'>
+                    {navigationItems.map((item, index) => (
+                      <button
+                        key={item.name}
+                        onClick={() => {
+                          handleNavigation(index);
+                        }}
+                        className={cn(
+                          'text-lg font-medium transition-colors text-left',
+                          activeSection === index
+                            ? 'text-primary'
+                            : 'hover:text-primary',
+                        )}
+                      >
+                        {item.name}
+                      </button>
+                    ))}
+                    <LanguageSwitcher />
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </nav>
+        </header>
 
-          {/* About Section */}
-          <CarouselItem className='w-full'>
-            <section className='h-screen overflow-y-auto bg-muted py-[8rem]'>
-              <AboutUs />
-            </section>
-          </CarouselItem>
+        <Carousel
+          className='w-full h-screen'
+          selectedIndex={activeSection}
+          setSelectedIndex={setActiveSection}
+          opts={{
+            align: 'start',
+            loop: false,
+          }}
+        >
+          <CarouselContent>
+            {/* Hero Banner */}
+            <CarouselItem className='w-full'>
+              <section className='relative h-screen flex items-center justify-center'>
+                <div className='absolute inset-0'>
+                  <img
+                    src='/images/header_fit.webp'
+                    alt='Hero background'
+                    className='w-full h-full object-cover'
+                  />
+                  <div className='absolute inset-0 bg-black/50' />
+                </div>
+                <div className='relative container mx-auto px-4 text-center text-white'>
+                  <div className='mb-12'>
+                    <h1 className='text-xl md:text-4xl font-bold mb-6 tracking-tight'>
+                      {t('headerTitle')}
+                    </h1>
+                    <h1 className='text-4xl md:text-6xl font-bold mb-6 tracking-tight'>
+                      {t('headerName')}
+                    </h1>
+                  </div>
+                  <div className='mt-16'>
+                    <Button
+                      size='lg'
+                      className='mr-4'
+                      onClick={() => handleNavigation(1)}
+                    >
+                      {t('service')}
+                    </Button>
+                    <Button
+                      size='lg'
+                      variant='outline'
+                      className='text-black'
+                      onClick={() => handleNavigation(3)}
+                    >
+                      {t('contact')}
+                    </Button>
+                  </div>
+                </div>
+              </section>
+            </CarouselItem>
 
-          {/* Contact Section */}
-          <CarouselItem className='w-full'>
-            <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <ContactUs />
-            </section>
-          </CarouselItem>
-        </CarouselContent>
-      </Carousel>
-    </div>
+            {/* Services Section */}
+            <CarouselItem className='w-full'>
+              <section className='h-screen overflow-y-auto bg-muted pt-[8rem] pb-[2rem]'>
+                <Services />
+              </section>
+            </CarouselItem>
+
+            {/* About Section */}
+            <CarouselItem className='w-full'>
+              <section className='h-screen overflow-y-auto bg-muted py-[8rem]'>
+                <AboutUs />
+              </section>
+            </CarouselItem>
+
+            {/* Contact Section */}
+            <CarouselItem className='w-full'>
+              <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
+                <ContactUs />
+              </section>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </>
   );
 }
