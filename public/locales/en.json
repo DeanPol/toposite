@@ -10,7 +10,7 @@
   "services": [
     {
       "title": "TOPOGRAPHIC STUDIES",
-      "image": "/images/service_1.webp",
+      "image": "/images/compressed/service_1.webp",
       "longDescription": "We undertake the detailed and accurate mapping of your property according to the coordinate projection systems used in Greece, such as the Hellenic Geodetic Reference System 1987, always in compliance with the applicable specifications.",
       "subServices": [
         "Topographic Diagram for the National Cadastre",
@@ -22,13 +22,13 @@
     },
     {
       "title": "TECHNICAL PHOTOINTERPRETATION REPORTS",
-      "image": "/images/service_2.webp",
+      "image": "/images/compressed/service_2.webp",
       "longDescription": "Photointerpretation is the process by which, using aerial photographs and satellite images from public and private services, we can document the characterization of land in relation to applicable forest legislation (whether forested or not), the type of vegetation and crops within the examined property, determine the geomorphology of the terrain, prove the existence or absence of roads, old paths, streams, buildings, or other constructions (cultivated land, dry stone walls, etc.) at specific dates. The technical reports produced are submitted to court and various services for cases of property disputes, illegal constructions, encroachments, etc.",
       "subServices": []
     },
     {
       "title": "BUILDING PERMITS",
-      "image": "/images/service_3.webp",
+      "image": "/images/compressed/service_3.webp",
       "longDescription": "We undertake all the necessary studies as well as the supervision of new building projects.",
       "subServices": [
         "Architectural Study, taking into account the architectural adaptation of the building to the surrounding environment and the client’s requirements",
@@ -38,25 +38,25 @@
     },
     {
       "title": "ENERGY INSPECTIONS",
-      "image": "/images/service_4.webp",
+      "image": "/images/compressed/service_4.webp",
       "longDescription": "We undertake the energy inspection of your property and the issuance of the energy performance certificate in a short period of time, always in accordance with applicable specifications.",
       "subServices": []
     },
     {
       "title": "FIRE SAFETY STUDIES",
-      "image": "/images/service_5.webp",
+      "image": "/images/compressed/service_5.webp",
       "longDescription": "The Technical Office undertakes the preparation of studies for fire protection and active fire safety systems.",
       "subServices": []
     },
     {
       "title": "TECHNICAL REPORTS",
-      "image": "/images/service_6.webp",
+      "image": "/images/compressed/service_6.webp",
       "longDescription": "We undertake the preparation of well-documented technical reports to resolve property disputes, boundary disputes, as well as reports on the application of property titles that can be used in court.",
       "subServices": []
     },
     {
       "title": "SERVICES FOR PROFESSIONALS",
-      "image": "/images/service_7.webp",
+      "image": "/images/compressed/service_7.webp",
       "longDescription": "We provide support for professionals in the technical sector (architects, etc.) in the implementation of their projects, as well as for businesses (quarries, etc.) to ensure their smooth operation (volume calculations, etc.), and for larger projects to ensure the quality of the final deliverable (establishment and calculation of horizontal and vertical control networks for mapping, staking, and monitoring micro-movements).",
       "subServices": [
         "Establishment/Calculation of traverses",
@@ -70,13 +70,13 @@
     },
     {
       "title": "ROAD DESIGN STUDIES",
-      "image": "/images/service_8.webp",
+      "image": "/images/compressed/service_8.webp",
       "longDescription": "Design of internal road networks for properties and land, traffic connection studies, road project studies.",
       "subServices": []
     },
     {
       "title": "SPACE AND YARD DESIGN STUDIES",
-      "image": "/images/service_9.webp",
+      "image": "/images/compressed/service_9.webp",
       "longDescription": "Our office designs and plans green spaces with an emphasis on aesthetically pleasing transformations, appropriate slopes for water drainage, and the creation of a microclimate using suitable shading systems in combination with ideal plants and trees, tailored to the client’s needs."
     }
   ],

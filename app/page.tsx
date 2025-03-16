@@ -83,7 +83,7 @@ export default function Home() {
             <button onClick={() => returnToHome()}>
               <img
                 alt='Site Logo'
-                src='/images/site_logo.webp'
+                src='/images/compressed/site_logo.webp'
                 className='h-[60px]'
                 height={60}
                 width={80}
@@ -158,7 +158,7 @@ export default function Home() {
             <section className='relative h-screen flex items-center justify-center'>
               <div className='absolute inset-0'>
                 <img
-                  src='/images/header_fit.webp'
+                  src='/images/compressed/header_fit.webp'
                   alt='Hero background'
                   className='w-full h-full object-cover'
                 />
