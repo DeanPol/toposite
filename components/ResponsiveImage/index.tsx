@@ -38,7 +38,7 @@ const ResponsiveImage = ({
       width={isMobile ? mobileWidth : desktopWidth}
       height={isMobile ? mobileHeight : desktopHeight}
       className={className}
-      priority
+      loading='lazy'
     />
   );
 };
