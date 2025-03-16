@@ -37,7 +37,9 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/estree": "^1.0.6",
     "@types/nodemailer": "^6.4.17",
+    "esbuild-loader": "^4.3.0",
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.3.0"
   }

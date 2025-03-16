@@ -1,10 +1,9 @@
-'use client';
-
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import ListItem from '@/components/list';
 
 import { useTranslation } from 'react-i18next';
+import ResponsiveImage from '../ResponsiveImage';
 
 interface StudiesItem {
   name: string;
@@ -27,14 +26,21 @@ export default function AboutUs() {
   }) as EquipmentItem[];
 
   return (
-    <div className='container mx-auto p-8 bg-card rounded'>
+    <div className='container mx-auto max-w-7xl p-8 bg-card rounded'>
       <div className='grid md:grid-cols-2 gap-12 items-center'>
         <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
-          <img
-            src='/images/header_banner.webp'
-            alt='Our team collaborating'
-            className='w-full h-full object-cover'
-          />
+          <div className='relative rounded-lg overflow-hidden'>
+            <ResponsiveImage
+              fileName={'header_banner.webp'}
+              desktopWidth={700}
+              desktopHeight={468}
+              mobileWidth={300}
+              mobileHeight={200}
+              lazyload={true}
+              imageDescription='Our team collaborating'
+              className='object-cover w-auto h-auto'
+            />
+          </div>
         </div>
         <div className='space-y-6'>
           <div className='inline-block'>
@@ -84,11 +90,16 @@ export default function AboutUs() {
             ))}
           </ul>
         </div>
-        <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
-          <img
-            src='/images/equipment.webp'
-            alt='Our team collaborating'
-            className='w-full h-full object-cover'
+        <div className='relative rounded-lg overflow-hidden'>
+          <ResponsiveImage
+            fileName={'equipment.webp'}
+            desktopWidth={700}
+            desktopHeight={468}
+            mobileWidth={300}
+            mobileHeight={200}
+            lazyload={true}
+            imageDescription='Our equipment'
+            className='object-cover w-auto h-auto'
           />
         </div>
       </div>

@@ -1,8 +1,5 @@
-'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, Send, TriangleAlert, CheckCheck } from 'lucide-react';
-import { Button } from '@/components/button';
 import { useTranslation } from 'react-i18next';
 
 export default function ContactUs() {
@@ -136,15 +133,14 @@ export default function ContactUs() {
               />
             </div>
 
-            <Button
+            <button
               aria-label='Send Message'
-              className='w-full'
-              size='lg'
+              className='w-full bg-[black] text-white py-2'
               type='submit'
               disabled={status == 'Sending...'}
             >
-              <Send className='mr-2 h-4 w-4' /> {t('contactSend')}
-            </Button>
+              {t('contactSend')}
+            </button>
             {status == 'Error sending email. Try again.' && (
               <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk] max-w-4xl mx-auto'>
                 <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto justify-items-center'>

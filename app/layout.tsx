@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { Inter } from 'next/font/google';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Τεχνικό Μελετητικό Γραφείο | Πολίτης Εδουάρδος-Οδυσσέας',
@@ -20,10 +20,10 @@ export default function RootLayout({
     <html lang='en' className='scroll-smooth'>
       <head>
         <title>Τεχνικό Μελετητικό Γραφείο | Πολίτης Εδουάρδος-Οδυσσέας</title>
-        <meta name='description' content='Τεχνικό Μελετητικό Γραφείο'></meta>
+        <meta name='description' content='Τεχνικό Μελετητικό Γραφείο' />
       </head>
       <body className={inter.className}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense fallback={<></>}>{children}</Suspense>
         <Footer />
       </body>
     </html>

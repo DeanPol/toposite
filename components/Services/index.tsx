@@ -1,5 +1,8 @@
+import React from 'react';
+
 import { ChevronRight } from 'lucide-react';
 
+import ResponsiveImage from '../ResponsiveImage';
 import { useTranslation } from 'react-i18next';
 
 interface ServiceItem {
@@ -35,9 +38,14 @@ export default function Services() {
             className='rounded-lg overflow-hidden transition-all hover:shadow-lg bg-card border border-gray-150'
           >
             <div className='aspect-video overflow-hidden border-b border-border/50'>
-              <img
-                src={service.image}
-                alt={service.title}
+              <ResponsiveImage
+                fileName={`service_${index + 1}.webp`}
+                desktopWidth={400}
+                desktopHeight={232}
+                mobileWidth={350}
+                mobileHeight={200}
+                lazyload={true}
+                imageDescription={service.title}
                 className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-muted'
               />
             </div>
