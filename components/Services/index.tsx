@@ -1,7 +1,8 @@
+import React from 'react';
+
 import { ChevronRight } from 'lucide-react';
 
 import ResponsiveImage from '../ResponsiveImage';
-
 import { useTranslation } from 'react-i18next';
 
 interface ServiceItem {
@@ -43,6 +44,7 @@ export default function Services() {
                 desktopHeight={232}
                 mobileWidth={350}
                 mobileHeight={200}
+                lazyload={true}
                 imageDescription={service.title}
                 className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-muted'
               />

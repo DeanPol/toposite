@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -10,6 +10,7 @@ interface ComponentProps {
   desktopHeight: number;
   mobileWidth: number;
   mobileHeight: number;
+  lazyload: boolean;
   imageDescription: string;
   className: string;
 }
@@ -20,6 +21,7 @@ const ResponsiveImage = ({
   desktopHeight,
   mobileWidth,
   mobileHeight,
+  lazyload,
   imageDescription,
   className,
 }: ComponentProps) => {
@@ -38,7 +40,7 @@ const ResponsiveImage = ({
       width={isMobile ? mobileWidth : desktopWidth}
       height={isMobile ? mobileHeight : desktopHeight}
       className={className}
-      loading='lazy'
+      loading={lazyload ? 'lazy' : 'eager'}
     />
   );
 };

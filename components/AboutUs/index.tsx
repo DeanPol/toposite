@@ -1,6 +1,4 @@
-'use client';
-
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import ListItem from '@/components/list';
 
@@ -28,7 +26,7 @@ export default function AboutUs() {
   }) as EquipmentItem[];
 
   return (
-    <div className='container mx-auto p-8 bg-card rounded'>
+    <div className='container mx-auto max-w-7xl p-8 bg-card rounded'>
       <div className='grid md:grid-cols-2 gap-12 items-center'>
         <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
           <div className='relative rounded-lg overflow-hidden'>
@@ -38,6 +36,7 @@ export default function AboutUs() {
               desktopHeight={468}
               mobileWidth={300}
               mobileHeight={200}
+              lazyload={true}
               imageDescription='Our team collaborating'
               className='object-cover w-auto h-auto'
             />
@@ -98,6 +97,7 @@ export default function AboutUs() {
             desktopHeight={468}
             mobileWidth={300}
             mobileHeight={200}
+            lazyload={true}
             imageDescription='Our equipment'
             className='object-cover w-auto h-auto'
           />

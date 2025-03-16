@@ -2,10 +2,11 @@
 
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { Button } from '@/components/button';
+import dynamic from 'next/dynamic';
+
 import {
   Sheet,
   SheetContent,
@@ -13,18 +14,28 @@ import {
   SheetTrigger,
 } from '@/components/sheet';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/carousel';
-import ContactUs from '@/components/ContactUs';
 
 import '../i18n';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import AboutUs from '@/components/AboutUs';
-import Services from '@/components/Services';
+import ResponsiveImage from '@/components/ResponsiveImage';
 
 interface NavigationItem {
   name: string;
   href: string;
 }
+
+const ServicesComponent = dynamic(() => import('@/components/Services'), {
+  ssr: true, // Load only on client-side
+});
+
+const AboutUsComponent = dynamic(() => import('@/components/AboutUs'), {
+  ssr: true, // Load only on client-side
+});
+
+const ContactUsComponent = dynamic(() => import('@/components/ContactUs'), {
+  ssr: false, // Load only on client-side
+});
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -87,6 +98,7 @@ export default function Home() {
                 className='h-[60px]'
                 height={60}
                 width={80}
+                loading='eager'
               />
             </button>
 
@@ -112,9 +124,9 @@ export default function Home() {
             {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild className='md:hidden'>
-                <Button aria-label='Burger Menu' variant='ghost' size='icon'>
+                <button aria-label='Burger Menu'>
                   <Menu className='h-6 w-6' />
-                </Button>
+                </button>
               </SheetTrigger>
               <SheetContent>
                 <SheetTitle></SheetTitle>
@@ -157,14 +169,19 @@ export default function Home() {
           <CarouselItem className='w-full'>
             <section className='relative h-screen flex items-center justify-center'>
               <div className='absolute inset-0'>
-                <img
-                  src='/images/header_fit.webp'
-                  alt='Hero background'
+                <ResponsiveImage
+                  fileName='header_fit.webp'
+                  imageDescription='Hero background'
+                  desktopWidth={952}
+                  desktopHeight={500}
+                  mobileWidth={380}
+                  mobileHeight={800}
+                  lazyload={false}
                   className='w-full h-full object-cover'
                 />
                 <div className='absolute inset-0 bg-black/50' />
               </div>
-              <div className='relative container mx-auto px-4 text-center text-white'>
+              <div className='absolute container mx-auto px-4 text-center text-white'>
                 <div className='mb-12'>
                   <h1 className='text-xl md:text-4xl font-bold mb-6 tracking-tight'>
                     {t('headerTitle')}
@@ -174,21 +191,18 @@ export default function Home() {
                   </h1>
                 </div>
                 <div className='mt-16'>
-                  <Button
-                    size='lg'
-                    className='mr-4'
+                  <button
+                    className='mr-4 bg-[black] py-0 px-8 h-11 rounded-md'
                     onClick={() => handleNavigation(1)}
                   >
                     {t('service')}
-                  </Button>
-                  <Button
-                    size='lg'
-                    variant='outline'
-                    className='text-black'
+                  </button>
+                  <button
+                    className='text-black bg-[white] py-0 px-8 h-11 rounded-md'
                     onClick={() => handleNavigation(3)}
                   >
                     {t('contact')}
-                  </Button>
+                  </button>
                 </div>
               </div>
             </section>
@@ -197,21 +211,21 @@ export default function Home() {
           {/* Services Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <Services />
+              <ServicesComponent />
             </section>
           </CarouselItem>
 
           {/* About Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted py-[8rem]'>
-              <AboutUs />
+              <AboutUsComponent />
             </section>
           </CarouselItem>
 
           {/* Contact Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
-              <ContactUs />
+              <ContactUsComponent />
             </section>
           </CarouselItem>
         </CarouselContent>
