@@ -2,7 +2,7 @@
 
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import dynamic from 'next/dynamic';
@@ -44,11 +44,20 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<number>(0);
   const sections = ['home', 'services', 'about', 'contact'];
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const navigationItems = t('navigation', {
     returnObjects: true,
   }) as NavigationItem[];
+
+  const LeafletMapComponent = useMemo(
+    () =>
+      dynamic(() => import('@/components/LeafletMap'), {
+        loading: () => <p>A map is loading</p>,
+        ssr: false,
+      }),
+    [],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -212,6 +221,20 @@ export default function Home() {
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>
               <ServicesComponent />
+              <div className='container mx-auto max-w-7xl p-8 mb-24 bg-card rounded'>
+                <div className='grid md:grid-cols-2 gap-12 items-center'>
+                  <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
+                    <div className='inline-block'>
+                      <p className='text-muted-foreground mb-6'>
+                        {t('laserScannerDescription')}
+                      </p>
+                    </div>
+                  </div>
+                  <div className='space-y-6'>
+                    <LeafletMapComponent />
+                  </div>
+                </div>
+              </div>
             </section>
           </CarouselItem>
 
@@ -221,7 +244,6 @@ export default function Home() {
               <AboutUsComponent />
             </section>
           </CarouselItem>
-
           {/* Contact Section */}
           <CarouselItem className='w-full'>
             <section className='h-screen overflow-y-auto bg-muted pt-[8rem]'>

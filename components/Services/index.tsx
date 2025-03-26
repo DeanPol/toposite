@@ -22,7 +22,6 @@ export default function Services() {
       <h2 className='text-xl font-bold mb-4 text-center'>
         {t('servicesHeader')}
       </h2>
-
       <p className='text-muted-foreground text-center max-w-2xl mx-auto'>
         {t('servicesSubtitle')}
       </p>

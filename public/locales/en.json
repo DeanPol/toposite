@@ -85,6 +85,7 @@
   "servicesHeader": "PROFESSIONAL SERVICES",
   "servicesSubtitle": "Services We Provide",
   "servicesDisclaimer": "Every legal transaction involving Sale, Parental Grant, Donation, etc., must be accompanied by a topographic diagram (Law 651/77, Article 5). However, beyond legal requirements, an accurate topographic diagram ensures the precise positioning of your property boundaries indefinitely.",
+  "laserScannerDescription": "Measurements with a laser scanner lead to the production of a point cloud, and with appropriate processing we can create three-dimensional models of the object, industrial complex or monument, with the help of which we have the ability to subsequently produce elevations, floor plans or sections at any level.Terrestrial scanning uses a ground-based or tripod-mounted light radar (commonly referred to as LIDAR) to create high resolution 3D images of surfaces and objects. LiDAR measures a scanned object by emitting laser pulses and recording the subsequent intensity of their return when reflected off it. Scanning can be performed over kilometers with sub-centimeter precision. Terrestrial scanning is commonly used for heritage documentation, 3D topographical surveys, accident sites, confined spaces survey and Mechanical, Electrical and Plumbing (MEP) models.",
   "studiesSectionTitle": "Indicative Studies",
   "previousStudies": [
     { "name": "Surveying of an area for beach rental in Naxos." },
