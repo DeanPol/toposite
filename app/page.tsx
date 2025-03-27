@@ -224,8 +224,12 @@ export default function Home() {
               <div className='container mx-auto max-w-7xl p-8 mb-24 bg-card rounded'>
                 <div className='grid md:grid-cols-2 gap-12 items-center'>
                   <div className='relative aspect-[4/3] rounded-lg overflow-hidden'>
-                    <div className='inline-block'>
-                      <p className='text-muted-foreground mb-6'>
+                    <div className='inline-block mb-2'>
+                      <h2 className='text-3xl font-bold mb-2'>
+                        {t('laserScannerTitle')}
+                      </h2>
+                      <div className='h-1 w-20 bg-primary rounded-full' />
+                      <p className='text-muted-foreground my-6'>
                         {t('laserScannerDescription')}
                       </p>
                     </div>
