@@ -150,7 +150,7 @@ export default function ContactUs() {
               </div>
             )}
             {status == 'Email sent successfully!' && (
-              <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[green] max-w-4xl mx-auto'>
+              <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[green] max-w-4xl mx-auto text-white justify-items-center'>
                 <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto'>
                   <CheckCheck />
                   {t('contactStatusSuccess')}
