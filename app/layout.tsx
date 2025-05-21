@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Technical Office | Politis Edward-Odysseus',
+  title: 'Technical Office | Politis Edouardos-Odysseas',
   description: 'Technical Studies Services',
 };
 
@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang='en' className='scroll-smooth'>
       <head>
-        <title>Technical Office | Politis Edward-Odysseus</title>
+        <title>Technical Office | Politis Edouardos-Odysseas</title>
         <meta
           name='description'
-          content='Topographic Studies - Technical Reports - Building Permits - POLITIS EDWARD-ODYSSEUS | topographypolitis@gmail.com | +30 695518942'
+          content='Topographic Studies - Technical Reports - Building Permits - POLITIS EDOUARDOS-ODYSSEAS | topographypolitis@gmail.com | +30 695518942'
         />
         <meta
           name='keywords'
