@@ -78,12 +78,17 @@
       "title": "SPACE AND YARD DESIGN STUDIES",
       "image": "/images/service_9.webp",
       "longDescription": "Our office designs and plans green spaces with an emphasis on aesthetically pleasing transformations, appropriate slopes for water drainage, and the creation of a microclimate using suitable shading systems in combination with ideal plants and trees, tailored to the client’s needs."
+    },
+    {
+      "title": "DRONE SERVICES",
+      "image": "/images/service_10.webp",
+      "longDescription": "Our services include high-resolution aerial videography and photography at the appropriate altitude selected, using advanced technology and specialized equipment for each project. We also handle photo and video editing to ensure the appropriate quality for the final result, depending on the requirements of the task. Final deliverables include photos of plots, properties, buildings, fields, etc., as well as high-resolution orthophotos."
     }
   ],
   "service": "SERVICES",
   "contact": "CONTACT",
   "servicesHeader": "PROFESSIONAL SERVICES",
-  "servicesSubtitle": "Services We Provide",
+  "servicesSubtitle": "Services we provide",
   "servicesDisclaimer": "Every legal transaction involving Sale, Parental Grant, Donation, etc., must be accompanied by a topographic diagram (Law 651/77, Article 5). However, beyond legal requirements, an accurate topographic diagram ensures the precise positioning of your property boundaries indefinitely.",
   "laserScannerTitle": "Highly Sophisticated Measurements",
   "laserScannerDescription": "Measurements with a laser scanner lead to the production of a point cloud, and with appropriate processing we can create three-dimensional models of the object, industrial complex or monument, with the help of which we have the ability to subsequently produce elevations, floor plans or sections at any level.Terrestrial scanning uses a ground-based or tripod-mounted light radar (commonly referred to as LIDAR) to create high resolution 3D images of surfaces and objects. LiDAR measures a scanned object by emitting laser pulses and recording the subsequent intensity of their return when reflected off it. Scanning can be performed over kilometers with sub-centimeter precision. Terrestrial scanning is commonly used for heritage documentation, 3D topographical surveys, accident sites, confined spaces survey and Mechanical, Electrical and Plumbing (MEP) models.",
