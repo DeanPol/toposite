@@ -1,19 +1,15 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from '@emotion/styled';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-interface Languages {
-  [key: string]: { nativeName: string };
-}
-
-const lngs: Languages = {
-  el: { nativeName: 'GR' },
-  en: { nativeName: 'EN' },
+const lngs = {
+  el: { nativeName: 'GR', path: '/' },
+  en: { nativeName: 'EN', path: '/en' },
 };
 
-// Styled components
+// Styled components (unchanged)
 const LanguageSwitcherContainer = styled.div`
   display: flex;
   align-items: center;
@@ -53,7 +49,15 @@ const Separator = styled.span`
 `;
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const isEnglish = pathname.startsWith('/en');
+  const currentLang = isEnglish ? 'en' : 'el';
+
+  const query = searchParams.toString();
+  const suffix = query ? `?${query}` : '';
 
   return (
     <LanguageSwitcherContainer>
@@ -61,13 +65,15 @@ export default function LanguageSwitcher() {
         <LanguageOption key={key}>
           <LanguageButton
             type='button'
-            onClick={() => i18n.changeLanguage(key)}
-            disabled={i18n.resolvedLanguage === key}
-            isSelected={i18n.resolvedLanguage === key}
+            isSelected={currentLang === key}
+            disabled={currentLang === key}
+            onClick={() => {
+              router.push(`${value.path}${suffix}`);
+            }}
           >
             {value.nativeName}
           </LanguageButton>
-          {/* Add separator '|' except for the last language */}
+
           {index < array.length - 1 && <Separator> | </Separator>}
         </LanguageOption>
       ))}
