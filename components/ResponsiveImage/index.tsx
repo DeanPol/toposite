@@ -1,48 +1,25 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-
 import Image from 'next/image';
 
-interface ComponentProps {
+interface ResponsiveImageProps {
   fileName: string;
-  desktopWidth: number;
-  desktopHeight: number;
-  mobileWidth: number;
-  mobileHeight: number;
-  lazyload: boolean;
-  imageDescription: string;
-  className: string;
+  alt: string;
+  className?: string;
 }
 
-const ResponsiveImage = ({
+export default function ResponsiveImage({
   fileName,
-  desktopWidth,
-  desktopHeight,
-  mobileWidth,
-  mobileHeight,
-  lazyload,
-  imageDescription,
+  alt,
   className,
-}: ComponentProps) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    typeof window !== 'undefined' && window.innerWidth < 600
-      ? setIsMobile(true)
-      : setIsMobile(false);
-  }, []);
-
+}: ResponsiveImageProps) {
   return (
     <Image
-      src={isMobile ? `/images/mobile/${fileName}` : `/images/${fileName}`}
-      alt={imageDescription}
-      width={isMobile ? mobileWidth : desktopWidth}
-      height={isMobile ? mobileHeight : desktopHeight}
+      src={`/images/${fileName}`}
+      alt={alt ?? 'Background Image'}
       className={className}
-      loading={lazyload ? 'lazy' : 'eager'}
+      sizes='(max-width: 600px) 350px, 400px'
+      width={400} // fallback width
+      height={232} // fallback height
+      priority={false} // lazy by default
     />
   );
-};
-
-export default ResponsiveImage;
+}

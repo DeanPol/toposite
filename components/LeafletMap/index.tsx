@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import { MapContainer, ImageOverlay } from 'react-leaflet';
 import { LatLngTuple } from 'leaflet'; // Import LatLngTuple type from leaflet

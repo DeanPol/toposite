@@ -7,7 +7,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='el'>
-      <body className='min-h-screen w-full'>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

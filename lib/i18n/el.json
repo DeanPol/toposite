@@ -1,9 +1,9 @@
 {
   "navigation": [
-    { "name": "ΑΡΧΙΚΗ", "href": "#home" },
-    { "name": "ΥΠΗΡΕΣΙΕΣ", "href": "#services" },
-    { "name": "ΣΧΕΤΙΚΑ", "href": "#about" },
-    { "name": "ΕΠΙΚΟΙΝΩΝΙΑ", "href": "#contact" }
+    { "name": "ΑΡΧΙΚΗ", "href": "/" },
+    { "name": "ΥΠΗΡΕΣΙΕΣ", "href": "/services" },
+    { "name": "ΣΧΕΤΙΚΑ", "href": "/about" },
+    { "name": "ΕΠΙΚΟΙΝΩΝΙΑ", "href": "/contact" }
   ],
   "headerTitle": "Τεχνικό Μελετητικό Γραφείο",
   "headerName": "ΠΟΛΙΤΗΣ ΕΔΟΥΑΡΔΟΣ-ΟΔΥΣΣΕΑΣ",

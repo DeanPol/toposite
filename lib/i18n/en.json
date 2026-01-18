@@ -1,9 +1,9 @@
 {
   "navigation": [
-    { "name": "HOME", "href": "#home" },
-    { "name": "SERVICES", "href": "#services" },
-    { "name": "ABOUT", "href": "#about" },
-    { "name": "CONTACT", "href": "#contact" }
+    { "name": "HOME", "href": "/" },
+    { "name": "SERVICES", "href": "/services" },
+    { "name": "ABOUT", "href": "/about" },
+    { "name": "CONTACT", "href": "/contact" }
   ],
   "headerTitle": "Technical Office in Naxos - POLITIS EDOUARDOS-ODYSSEAS",
   "headerName": "Topographic Studies & Engineering Services in the Cyclades",
