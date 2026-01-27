@@ -3,7 +3,6 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 
 import ResponsiveImage from '../ResponsiveImage';
-import { useTranslation } from 'react-i18next';
 
 interface ServiceItem {
   title: string;
@@ -12,26 +11,32 @@ interface ServiceItem {
   subServices: string[];
 }
 
-export default function Services() {
-  const { t } = useTranslation();
-  const serviceItems = t('services', {
-    returnObjects: true,
-  }) as ServiceItem[];
+interface ServicesProps {
+  services: ServiceItem[];
+  servicesHeader: string;
+  servicesSubtitle: string;
+  servicesDisclaimer: string;
+}
+
+export default function Services({
+  services,
+  servicesHeader,
+  servicesSubtitle,
+  servicesDisclaimer,
+}: ServicesProps) {
   return (
     <>
-      <h2 className='text-xl font-bold mb-4 text-center'>
-        {t('servicesHeader')}
-      </h2>
+      <h2 className='text-xl font-bold mb-4 text-center'>{servicesHeader}</h2>
       <p className='text-muted-foreground text-center max-w-2xl mx-auto'>
-        {t('servicesSubtitle')}
+        {servicesSubtitle}
       </p>
       <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk] max-w-4xl mx-auto'>
         <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto'>
-          {t('servicesDisclaimer')}
+          {servicesDisclaimer}
         </p>
       </div>
       <div className='grid lg:grid-cols-3 gap-8 text-center max-w-7xl mx-auto py-8 mb-4'>
-        {serviceItems.map((service, index) => (
+        {services.map((service, index) => (
           <div
             key={index}
             className='rounded-lg overflow-hidden transition-all hover:shadow-lg bg-card border border-gray-150'

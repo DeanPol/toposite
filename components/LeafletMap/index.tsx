@@ -10,7 +10,7 @@ const LeafletMap = () => {
     ) as HTMLElement;
 
     const handleDragStart = (e: MouseEvent | TouchEvent) => {
-      e.stopPropagation(); // Prevent the event from reaching the parent (carousel)
+      e.stopPropagation();
     };
 
     if (mapElement) {

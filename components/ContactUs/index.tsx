@@ -1,8 +1,37 @@
-import React, { useState } from 'react';
-import { Mail, Phone, Send, TriangleAlert, CheckCheck } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+'use client';
 
-export default function ContactUs() {
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, TriangleAlert, CheckCheck } from 'lucide-react';
+
+interface ContactUsProps {
+  contactUs: string;
+  contactEmail: string;
+  contactPhone: string;
+  contactAddress: string;
+  address: string;
+  contactFirstName: string;
+  contactLastName: string;
+  contactMessage: string;
+  contactMessagePlaceholder: string;
+  contactSend: string;
+  contactStatusFail: string;
+  contactStatusSuccess: string;
+}
+
+export default function ContactUs({
+  contactUs,
+  contactEmail,
+  contactPhone,
+  contactAddress,
+  address,
+  contactFirstName,
+  contactLastName,
+  contactMessage,
+  contactMessagePlaceholder,
+  contactSend,
+  contactStatusFail,
+  contactStatusSuccess,
+}: ContactUsProps) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,29 +60,28 @@ export default function ContactUs() {
 
       const data = await response.json();
       if (response.ok) {
-        setStatus('Email sent successfully!');
+        setStatus('success');
         setFormData({ firstName: '', lastName: '', email: '', message: '' });
       } else {
-        setStatus(data.message);
+        setStatus('error');
       }
     } catch (error) {
-      setStatus('Error sending email. Try again.');
+      setStatus('error');
     }
   };
 
-  const { t } = useTranslation();
   return (
     <div className='container mx-auto px-4'>
       <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-12'>
         <div>
-          <h2 className='text-3xl font-bold mb-8'>{t('contactUs')}</h2>
+          <h2 className='text-3xl font-bold mb-8'>{contactUs}</h2>
           <div className='space-y-8'>
             <div className='flex items-center gap-4'>
               <div className='bg-primary/10 p-3 rounded-full'>
                 <Mail className='h-6 w-6 text-primary' />
               </div>
               <div>
-                <h3 className='font-medium'>{t('contactEmail')}</h3>
+                <h3 className='font-medium'>{contactEmail}</h3>
                 <p className='text-muted-foreground'>
                   topographypolitis@gmail.com
                 </p>
@@ -65,8 +93,18 @@ export default function ContactUs() {
                 <Phone className='h-6 w-6 text-primary' />
               </div>
               <div>
-                <h3 className='font-medium'>{t('contactPhone')}</h3>
+                <h3 className='font-medium'>{contactPhone}</h3>
                 <p className='text-muted-foreground'>+30 6975518942</p>
+              </div>
+            </div>
+
+            <div className='flex items-center gap-4'>
+              <div className='bg-primary/10 p-3 rounded-full'>
+                <MapPin className='h-6 w-6 text-primary' />
+              </div>
+              <div>
+                <h3 className='font-medium'>{contactAddress}</h3>
+                <p className='text-muted-foreground'>{address}</p>
               </div>
             </div>
           </div>
@@ -77,7 +115,7 @@ export default function ContactUs() {
             <div className='grid md:grid-cols-2 gap-4'>
               <div>
                 <label className='block text-sm font-medium mb-2'>
-                  {t('contactFirstName')}
+                  {contactFirstName}
                 </label>
                 <input
                   type='text'
@@ -91,7 +129,7 @@ export default function ContactUs() {
               </div>
               <div>
                 <label className='block text-sm font-medium mb-2'>
-                  {t('contactLastName')}
+                  {contactLastName}
                 </label>
                 <input
                   type='text'
@@ -106,7 +144,7 @@ export default function ContactUs() {
 
             <div>
               <label className='block text-sm font-medium mb-2'>
-                {t('contactEmail')}
+                {contactEmail}
               </label>
               <input
                 type='email'
@@ -121,11 +159,11 @@ export default function ContactUs() {
 
             <div>
               <label className='block text-sm font-medium mb-2'>
-                {t('contactMessage')}
+                {contactMessage}
               </label>
               <textarea
                 name='message'
-                placeholder={t('contactMessagePlaceholder')}
+                placeholder={contactMessagePlaceholder}
                 className='w-full px-4 py-2 rounded-md border bg-background h-32'
                 value={formData.message}
                 onChange={handleChange}
@@ -137,23 +175,23 @@ export default function ContactUs() {
               aria-label='Send Message'
               className='w-full bg-[black] text-white py-2'
               type='submit'
-              disabled={status == 'Sending...'}
+              disabled={status === 'Sending...'}
             >
-              {t('contactSend')}
+              {contactSend}
             </button>
-            {status == 'Error sending email. Try again.' && (
+            {status === 'error' && (
               <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[cornsilk] max-w-4xl mx-auto'>
                 <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto justify-items-center'>
                   <TriangleAlert />
-                  {t('contactStatusFail')}
+                  {contactStatusFail}
                 </p>
               </div>
             )}
-            {status == 'Email sent successfully!' && (
+            {status === 'success' && (
               <div className='relative px-4 text-center my-8 p-6 rounded-lg bg-[green] max-w-4xl mx-auto text-white justify-items-center'>
                 <p className='text-xs md:text-sm text-muted-foreground max-w-4xl mx-auto'>
                   <CheckCheck />
-                  {t('contactStatusSuccess')}
+                  {contactStatusSuccess}
                 </p>
               </div>
             )}

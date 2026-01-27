@@ -1,7 +1,6 @@
 'use client';
-
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { usePathname, useRouter } from 'next/navigation';
 import styled from '@emotion/styled';
 
 interface Languages {
@@ -53,7 +52,27 @@ const Separator = styled.span`
 `;
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Determine current locale from pathname
+  const currentLocale = pathname.startsWith('/en') ? 'en' : 'el';
+
+  const switchLocale = (locale: string) => {
+    if (locale === currentLocale) return;
+
+    // Remove current locale prefix
+    let newPath = pathname.replace(/^\/en/, '');
+    
+    // Add new locale prefix (only for English, Greek is root)
+    if (locale === 'en') {
+      newPath = `/en${newPath || ''}`;
+    } else {
+      newPath = newPath || '/';
+    }
+
+    router.push(newPath);
+  };
 
   return (
     <LanguageSwitcherContainer>
@@ -61,13 +80,12 @@ export default function LanguageSwitcher() {
         <LanguageOption key={key}>
           <LanguageButton
             type='button'
-            onClick={() => i18n.changeLanguage(key)}
-            disabled={i18n.resolvedLanguage === key}
-            isSelected={i18n.resolvedLanguage === key}
+            onClick={() => switchLocale(key)}
+            disabled={currentLocale === key}
+            isSelected={currentLocale === key}
           >
             {value.nativeName}
           </LanguageButton>
-          {/* Add separator '|' except for the last language */}
           {index < array.length - 1 && <Separator> | </Separator>}
         </LanguageOption>
       ))}

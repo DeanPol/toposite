@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 
 import ListItem from '@/components/list';
-
-import { useTranslation } from 'react-i18next';
 import ResponsiveImage from '../ResponsiveImage';
 
 interface StudiesItem {
@@ -14,17 +12,19 @@ interface EquipmentItem {
   specifications: { characteristic: string; details?: { name: string }[] }[];
 }
 
-export default function AboutUs() {
-  const { t } = useTranslation();
+interface AboutUsProps {
+  previousStudies: StudiesItem[];
+  equipmentEntry: EquipmentItem[];
+  studiesSectionTitle: string;
+  equipmentSectionTitle: string;
+}
 
-  const studiesItems = t('previousStudies', {
-    returnObjects: true,
-  }) as StudiesItem[];
-
-  const equipmentItems = t('equipmentEntry', {
-    returnObjects: true,
-  }) as EquipmentItem[];
-
+export default function AboutUs({
+  previousStudies,
+  equipmentEntry,
+  studiesSectionTitle,
+  equipmentSectionTitle,
+}: AboutUsProps) {
   return (
     <div className='container mx-auto max-w-7xl p-8 bg-card rounded'>
       <div className='grid md:grid-cols-2 gap-12 items-center'>
@@ -44,13 +44,11 @@ export default function AboutUs() {
         </div>
         <div className='space-y-6'>
           <div className='inline-block'>
-            <h2 className='text-3xl font-bold mb-2'>
-              {t('studiesSectionTitle')}
-            </h2>
+            <h2 className='text-3xl font-bold mb-2'>{studiesSectionTitle}</h2>
             <div className='h-1 w-20 bg-primary rounded-full' />
           </div>
           <ul className='space-y-3 text-lg text-muted-foreground leading-relaxed'>
-            {studiesItems.map((study, index) => (
+            {previousStudies.map((study, index) => (
               <ListItem key={index} text={study.name} />
             ))}
           </ul>
@@ -60,13 +58,11 @@ export default function AboutUs() {
       <div className='grid md:grid-cols-2 gap-12 items-center mt-12'>
         <div className='space-y-6'>
           <div className='inline-block'>
-            <h2 className='text-3xl font-bold mb-2'>
-              {t('equipmentSectionTitle')}
-            </h2>
+            <h2 className='text-3xl font-bold mb-2'>{equipmentSectionTitle}</h2>
             <div className='h-1 w-20 bg-primary rounded-full' />
           </div>
           <ul className='list-disc list-inside space-y-4 text-gray-800'>
-            {equipmentItems.map((entry, index) => (
+            {equipmentEntry.map((entry, index) => (
               <li key={index}>
                 <span className='font-semibold'>{entry.entryName}</span>
                 <ul className=' pl-6 mt-2 text-sm text-gray-600'>
